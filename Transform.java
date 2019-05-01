@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import operationClasses.defaultOperations.*;
+import java.util.*;
 
 public class Transform {
 
@@ -13,30 +12,30 @@ public class Transform {
 		int i = 0;
 		while (equation.charAt(i) != '=') {
 			if (equation.charAt(i) == '{') {
+				++i;
 				while (equation.charAt(i) != '}') {
 					build.append(equation.charAt(i));
 					++i;
 				}
-				build.append(equation.charAt(i));
 				result.add(build.toString());
 				build.setLength(0);
 				++i;
 			}
 			if (equation.charAt(i) == '[') {
+				++i;
 				while (equation.charAt(i) != ']') {
 					build.append(equation.charAt(i));
 					++i;
 				}
-				build.append(equation.charAt(i));
 				
 				if (build.toString().equals("[(]")) {
 					operationStack.add(build.toString());
-					lastPriority = Bracket.getPriority();
+					lastPriority = 0;
 				}
 
-				else if (build.toString().equals("[)]")) {
+				else if (build.toString().equals(")")) {
 					int size = operationStack.size() - 1;
-					while (!operationStack.get(size).equals("[(]")) {
+					while (!operationStack.get(size).equals("(")) {
 						result.add(operationStack.get(size));
 						operationStack.remove(size);
 						--size;
