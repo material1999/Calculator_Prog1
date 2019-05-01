@@ -5,9 +5,10 @@ public abstract class Linear extends Operation {
 		super(id, priority);
 	}
 	
-	public final double doOperation() {
-		// operation(processzer.getParameter())
-		return 0;
+	public final double doOperation(ArrayList<Double> arguments) {
+		double param = Double.parseDouble(arguments[arguments.size()-1]);
+		arguments.remove(arguments.size()-1); 
+		return operation(param);
 	}
 	
 	

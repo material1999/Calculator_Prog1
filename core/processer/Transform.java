@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Transform {
 
-	public static ArrayList<String> toReversePolishNotation(String equation) {
+	public static ArrayList<String> toReversePolishNotation(String equation,CoreBuilder builder) {
 		
 		ArrayList<String> result = new ArrayList<String>();
 		ArrayList<String> operationStack = new ArrayList<String>();
@@ -43,14 +43,16 @@ public class Transform {
 						--size;
 					}
 					operationStack.remove(size);
-					//lastPriority = top operations priority
+					// !!!!!!!!!!!!!!!!!!!!!!
+					lastPriority = builder.getPriority(operationStack.get(size));
+					// !!!!!!!!!!!!!!!!!!!!!!
 					System.out.println(result);
 				}
 
 				//else if the priority is bigger than the top of the stack
 				//empty operationStack until the top is lower then actual priority
 				else {
-					if (false) {
+					if (builder.getPriority(operationStack[operationStack.size() - 1]) < ) {
 						
 					}
 					operationStack.add(build.toString());
