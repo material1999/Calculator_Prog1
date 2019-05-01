@@ -1,4 +1,4 @@
-
+package core.builder;
 public abstract class Bivariate extends Operation {
 	
 	public Bivariate(String id, int priority) {

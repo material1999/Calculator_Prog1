@@ -1,16 +1,25 @@
+package core.builder;
 import java.util.ArrayList;
+import core.*;
 
 
-public final class Builder {
+public final class CoreBuilder {
 	
 	private ArrayList<Operation> operations = new ArrayList<Operation>();
 	
-	public Builder() { // TODO :  Need to pass the reference of the processer and pass down to the Operation class for the parameter getting!
-		
+	
+	
+	public CoreBuilder() { 	} 
+	
+	public double process(String raw_data){
+		for(String element : Transform::toReversePolishNotation(raw_data)) {
+			
+		}
+				
 	}
 	
 	
-	public double executeOperation(String id) {
+	private double executeOperation(String id) {
 		for(Operation operation : operations) if(operation.getID() == id) return operation.doOperation();
 		return 0;
 	}

@@ -1,4 +1,4 @@
-
+package core.builder;
 public abstract class Operation {
 	protected String id;
 	protected int priority;
