@@ -1,10 +1,12 @@
-package UI;
+
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
+
+import core.processer.*;
 
 public class MainFrame extends JFrame {
 
@@ -76,11 +78,11 @@ public class MainFrame extends JFrame {
         JButton szam0 = new JButton("0");
         JButton more = new JButton("...");
         JButton tizedesvesszo = new JButton(",");
-        JButton sum = new JButton("+");
-        JButton sub = new JButton("-");
-        JButton mult = new JButton("*");
-        JButton div = new JButton("/");
-        JButton percent = new JButton("%");
+        Button sum = new Button("[+]","+");
+        Button sub = new Button("[-]","-");
+        Button mult = new Button("[*]","*");
+        Button div = new Button("[/]","/");
+        Button percent = new Button("[%]","%");
         JButton delete = new JButton("C");
         JButton equals = new JButton("=");
         JButton deletestring = new JButton("CE");
@@ -104,8 +106,9 @@ public class MainFrame extends JFrame {
             }
         }
         StringBuilder input = new StringBuilder();
+        StringBuilder process_input = new StringBuilder();
         JButton[] numberButtons = {szam0, szam1, szam2, szam3, szam4, szam5, szam6, szam7, szam8, szam9};
-        JButton[] operationButtons = {percent, div, mult, sum, sub, tizedesvesszo};
+        Button[] operationButtons = {percent, div, mult, sum, sub};
 
         //nyomkodós gombok jelenjenek meg
         for (JButton i: numberButtons) {
@@ -113,6 +116,7 @@ public class MainFrame extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     textField.setText(input.append(i.getText()).toString());
+                    process_input.append(i.getText());
                     isLastCharANumber = true;
 
                 }
@@ -125,18 +129,21 @@ public class MainFrame extends JFrame {
          */
         /////////////////////////////////////////////////////////
 
-        for (JButton operations: operationButtons
+        for (Button operations: operationButtons
         ) {
             operations.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if(isLastCharANumber){
                         textField.setText(input.append(operations.getText()).toString());
+                        process_input.append(operations.getID());
                         isLastCharANumber = false;
                     }
                     else {
                         input.setCharAt(textField.getText().length()-1, operations.getText().charAt(0));
                         textField.setText(input.toString());
+                        process_input.delete(process_input.lastIndexOf("["),process_input.toString().length()-1);
+                       process_input.append(operations.getID());
                     }
 
                 }
@@ -171,7 +178,12 @@ public class MainFrame extends JFrame {
         });
 
 
-
+        ////////////////////////////////////////////
+        
+        equals.addActionListener(e ->  {
+        	process_input.append("=");
+        	
+        });
 
         frame.setBounds(300, 200, 500, 700);
 

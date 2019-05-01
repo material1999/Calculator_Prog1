@@ -1,4 +1,4 @@
-
+package core.builder;
 public abstract class Linear extends Operation {
 
 	public Linear(String id) {
