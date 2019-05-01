@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 
-import core.processer.*;
+import core.builder.*;
 
 public class MainFrame extends JFrame {
 
@@ -14,7 +14,7 @@ public class MainFrame extends JFrame {
 
 
 
-    public MainFrame () {
+    public MainFrame (CoreBuilder builder) {
         JFrame frame = new JFrame();
         GridBagLayout grid = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
@@ -182,7 +182,7 @@ public class MainFrame extends JFrame {
         
         equals.addActionListener(e ->  {
         	process_input.append("=");
-        	
+        	process_input.delete(0, process_input.toString().length()-1).append(builder.process(process_input.toString()));
         });
 
         frame.setBounds(300, 200, 500, 700);
