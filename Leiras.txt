@@ -13,4 +13,3 @@
 Feladat: SZÁMOLÓGÉP (határidő: szorgalmi időszak utolsó hete)
 
 Bővíthető számológépet kell készíteni. Design nincs megkötve. Legyen grafikus felhasználói felülete (GUI: Swing és/vagy JavaFX). Alapműveleteket tudjon elvégezni, de moduláris legyen, vagyis új műveleteket új osztályokkal lehessen létrehozni (1 és 2 operandusú műveletek). Működő program vegye észre, hogy van egy új művelet (új class file bemásolva a mapparendszerbe), és futásidőben tudjon ezzel dolgozni (reflection). Minden bővítmény új ikonnal jelenjen meg (különböző piktogramok).
-

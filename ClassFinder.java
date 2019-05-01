@@ -4,7 +4,7 @@ import java.util.*;
 public class ClassFinder {
 
 	public ArrayList<String> findClasses() {
-		File file = new File(".");
+		File file = new File("./core/builder/operations");
 		ArrayList<String> classList = new ArrayList<String>();
 		for (String classes : file.list(new ClassFilter())) {
 			classList.add(classes.split("\\.")[0]);

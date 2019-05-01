@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Transform {
 
-	public ArrayList<String> toReversePolishNotation(String equation) {
+	public static ArrayList<String> toReversePolishNotation(String equation) {
 		
 		ArrayList<String> result = new ArrayList<String>();
 		ArrayList<String> operationStack = new ArrayList<String>();

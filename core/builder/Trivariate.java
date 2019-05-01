@@ -1,11 +1,12 @@
 
 public abstract class Trivariate extends Operation{
-	public Trivariate(String id) {
-		super(id);
+	public Trivariate(String id, int priority) {
+		super(id, priority);
 	}
 	
 	public final double doOperation() {
 		//return operation(processzer.getParameter(),processzer.getParameter(),processzer.getParameter())
+		return 0;
 	}
 	
 		

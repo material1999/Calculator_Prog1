@@ -1,8 +1,8 @@
 
 public abstract class Bivariate extends Operation {
 	
-	public Bivariate(String id) {
-		super(id);
+	public Bivariate(String id, int priority) {
+		super(id, priority);
 	}
 	
 	public final double doOperation() {

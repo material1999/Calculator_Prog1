@@ -1,8 +1,8 @@
 
 public abstract class Linear extends Operation {
 
-	public Linear(String id) {
-		super(id);
+	public Linear(String id, int priority) {
+		super(id, priority);
 	}
 	
 	public final double doOperation() {
