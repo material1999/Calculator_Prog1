@@ -1,26 +1,25 @@
 package core.builder;
-import java.util.ArrayList;
-import core.*;
+import java.util.*;
+import core.processer.*;
 
 
 public final class CoreBuilder {
 	
 	private ArrayList<Operation> operations = new ArrayList<Operation>();
-	private Map<String, boolean> runtimeLoaded = new Map<String, boolean>();
+	private HashMap<String, Boolean> runtimeLoaded = new HashMap<String, Boolean>();
 
 	public ArrayList<Double> argumentStack = new ArrayList<Double>();
-	
-	
 	
 	public CoreBuilder() { 	} 
 	
 	public double process(String raw_data){
-		for(String element : Transform::toReversePolishNotation(raw_data,this)) {
-			if(!argumentStack.add(Double.parseDouble(element))){
+		Function<String, ArrayList> transform = Transform::toReversePolishNotation;
+		for(String element : transform(raw_data,this)) {
+			if(!argumentStack.add(Double.parseDouble(element))) {
 				argumentStack.add(executeOperation(element));
 			}
 		}
-		return argumentStack[0];				
+		return argumentStack.get(0);				
 	}
 	
 	
@@ -39,13 +38,13 @@ public final class CoreBuilder {
         ArrayList<String> list = classFinder.findClasses();
         ClassLoader classLoader = this.getClass().getClassLoader();
         for (String item : list) {
-        	if (!runtimeLoaded[item]) {
+        	if (!runtimeLoaded.get(item)) {
         		Class newOperation = classLoader.loadClass(item);
         		if (newOperation instanceof Linear || newOperation instanceof Bivariate || newOperation instanceof Trivariate) {
         				Constructor constructor = newOperation.getConstructor();
         				Operation operationInstance = constructor.newInstance();
         				operations.add(operationInstance);
-        				runtimeLoaded[item] = true;
+        				runtimeLoaded.put(item, true);
         		}
         	}
         }

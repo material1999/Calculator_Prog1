@@ -1,3 +1,5 @@
+package core.builder;
+import java.util.*;
 
 public abstract class Trivariate extends Operation{
 	public Trivariate(String id, int priority) {
@@ -5,9 +7,9 @@ public abstract class Trivariate extends Operation{
 	}
 	
 	public final double doOperation(ArrayList<Double> arguments) {
-		double param = Double.parseDouble(arguments[arguments.size()-1]);
-		double param_2 = Double.parseDouble(arguments[arguments.size()-2]);
-		double param_3 = Double.parseDouble(arguments[arguments.size()-3]);
+		double param = Double.parseDouble(arguments.get(arguments.size()-1).toString());
+		double param_2 = Double.parseDouble(arguments.get(arguments.size()-2).toString());
+		double param_3 = Double.parseDouble(arguments.get(arguments.size()-3).toString());
 		arguments.remove(arguments.size()-1); 
 		arguments.remove(arguments.size()-1);
 		arguments.remove(arguments.size()-1);

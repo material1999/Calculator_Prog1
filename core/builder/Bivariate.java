@@ -1,4 +1,6 @@
 package core.builder;
+import java.util.*;
+
 public abstract class Bivariate extends Operation {
 	
 	public Bivariate(String id, int priority) {
@@ -6,8 +8,8 @@ public abstract class Bivariate extends Operation {
 	}
 	
 	public final double doOperation(ArrayList<Double> arguments) {
-		double param = Double.parseDouble(arguments[arguments.size()-1]);
-		double param_2 = Double.parseDouble(arguments[arguments.size()-2]);
+		double param = Double.parseDouble(arguments.get(arguments.size()-1).toString());
+		double param_2 = Double.parseDouble(arguments.get(arguments.size()-2).toString());
 		arguments.remove(arguments.size()-1); 
 		arguments.remove(arguments.size()-1);
 		return operation(param,param_2);

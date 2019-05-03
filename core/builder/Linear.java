@@ -1,4 +1,6 @@
 package core.builder;
+import java.util.*;
+
 public abstract class Linear extends Operation {
 
 	public Linear(String id, int priority) {
@@ -6,7 +8,7 @@ public abstract class Linear extends Operation {
 	}
 	
 	public final double doOperation(ArrayList<Double> arguments) {
-		double param = Double.parseDouble(arguments[arguments.size()-1]);
+		double param = Double.parseDouble(arguments.get(arguments.size()-1).toString());
 		arguments.remove(arguments.size()-1); 
 		return operation(param);
 	}
