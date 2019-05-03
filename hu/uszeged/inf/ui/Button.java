@@ -1,3 +1,4 @@
+package hu.uszeged.inf.ui;
 import javax.swing.JButton;
 
 public class Button extends JButton{

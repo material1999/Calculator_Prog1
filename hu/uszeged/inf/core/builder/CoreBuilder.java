@@ -4,10 +4,10 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import hu.uszeged.inf.core.processer.*;
-import hu.uszeged.inf.core.builder.*;
+import hu.uszeged.inf.ui.*;
 
 public final class CoreBuilder {
-	
+	private MainFrame UI;
 	private ArrayList<Operation> operations = new ArrayList<Operation>();
 	private HashMap<String, Boolean> runtimeLoaded = new HashMap<String, Boolean>();
 
@@ -34,6 +34,10 @@ public final class CoreBuilder {
 	public int getPriority(String id){
 		for(Operation operation : operations) if(operation.getID() == id) return operation.getPriority();
 		return 0;
+	}
+	
+	public void setTargetUI(MainFrame ui) {
+		this.UI = ui;
 	}
 	
 	public void loadOperation(Object operation) {
