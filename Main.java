@@ -1,5 +1,6 @@
 
-import core.builder.*;
+import hu.uszeged.inf.core.builder.*;
+
 import java.awt.*;
 
 import java.awt.event.ActionListener;

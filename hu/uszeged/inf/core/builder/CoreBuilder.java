@@ -1,7 +1,10 @@
-package core.builder;
-import java.util.*;
-import core.processer.*;
+package hu.uszeged.inf.core.builder;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
+import hu.uszeged.inf.core.processer.*;
+import hu.uszeged.inf.core.builder.*;
 
 public final class CoreBuilder {
 	
@@ -13,8 +16,8 @@ public final class CoreBuilder {
 	public CoreBuilder() { 	} 
 	
 	public double process(String raw_data){
-		Function<String, ArrayList> transform = Transform::toReversePolishNotation;
-		for(String element : transform(raw_data,this)) {
+		//Function<String, ArrayList> transform = Transform::toReversePolishNotation;
+		for(String element : Transform.toReversePolishNotation(raw_data,this)) {
 			if(!argumentStack.add(Double.parseDouble(element))) {
 				argumentStack.add(executeOperation(element));
 			}
@@ -30,22 +33,32 @@ public final class CoreBuilder {
 
 	public int getPriority(String id){
 		for(Operation operation : operations) if(operation.getID() == id) return operation.getPriority();
+		return 0;
 	}
 	
 	public void loadOperation(Object operation) {
 		// Need to call this function in the loaded operation class over the reflection to store it in the this.operations, find a free id and create a button
 		ClassFinder classFinder = new ClassFinder();
         ArrayList<String> list = classFinder.findClasses();
-        ClassLoader classLoader = this.getClass().getClassLoader();
+       
         for (String item : list) {
         	if (!runtimeLoaded.get(item)) {
-        		Class newOperation = classLoader.loadClass(item);
-        		if (newOperation instanceof Linear || newOperation instanceof Bivariate || newOperation instanceof Trivariate) {
-        				Constructor constructor = newOperation.getConstructor();
-        				Operation operationInstance = constructor.newInstance();
-        				operations.add(operationInstance);
+        		ClassLoader classLoader = this.getClass().getClassLoader();
+        		Class newOperation;
+				try {
+					newOperation = classLoader.loadClass(item);
+					Constructor constructor = newOperation.getConstructor();
+					Object operationInstance = constructor.newInstance();
+					if (operationInstance instanceof Linear || operationInstance instanceof Bivariate || operationInstance instanceof Trivariate) {
+        				operations.add((Operation)operationInstance);
         				runtimeLoaded.put(item, true);
-        		}
+					}else {
+						newOperation = null;
+					}
+				} catch (ClassNotFoundException | NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+					e.printStackTrace();
+				}       		
+        		
         	}
         }
 

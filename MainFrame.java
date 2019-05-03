@@ -1,12 +1,11 @@
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 
-import core.builder.*;
+import hu.uszeged.inf.core.builder.*;
 
 public class MainFrame extends JFrame {
 

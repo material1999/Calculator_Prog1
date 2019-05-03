@@ -1,5 +1,5 @@
-package core.builder.operations;
-import core.builder.*;
+package hu.uszeged.inf.core.builder.operations;
+import hu.uszeged.inf.core.builder.*;
 
 public class Addition extends Bivariate {
 

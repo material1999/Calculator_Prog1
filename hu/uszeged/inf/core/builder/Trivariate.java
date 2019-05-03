@@ -1,4 +1,4 @@
-package core.builder;
+package hu.uszeged.inf.core.builder;
 import java.util.*;
 
 public abstract class Trivariate extends Operation{

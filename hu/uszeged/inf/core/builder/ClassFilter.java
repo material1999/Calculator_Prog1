@@ -1,3 +1,4 @@
+package hu.uszeged.inf.core.builder;
 import java.io.*;
 
 public class ClassFilter implements FilenameFilter {

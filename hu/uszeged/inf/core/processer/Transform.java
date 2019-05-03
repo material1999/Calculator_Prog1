@@ -1,5 +1,7 @@
-package core.processer;
+package hu.uszeged.inf.core.processer;
 import java.util.*;
+
+import hu.uszeged.inf.core.builder.*;
 
 
 public class Transform {
@@ -52,7 +54,7 @@ public class Transform {
 				//else if the priority is bigger than the top of the stack
 				//empty operationStack until the top is lower then actual priority
 				else {
-					if (builder.getPriority(operationStack[operationStack.size() - 1]) < ) {
+					if (builder.getPriority(operationStack[operationStack.size() - 1]) < 0 ) {
 						
 					}
 					operationStack.add(build.toString());
