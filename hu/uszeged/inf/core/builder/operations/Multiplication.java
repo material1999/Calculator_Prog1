@@ -1,5 +1,6 @@
 package hu.uszeged.inf.core.builder.operations;
 import hu.uszeged.inf.core.builder.*;
+
 public class Multiplication extends Bivariate {
 
 	public Multiplication() {

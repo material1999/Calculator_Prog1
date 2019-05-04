@@ -33,12 +33,20 @@ public final class CoreBuilder {
 	
 	
 	private double executeOperation(String id) {		
-		for(Operation operation : operations) if(operation.getID() == id) return operation.doOperation(argumentStack);
+		for(Operation operation : operations) {
+			if(operation.getID().equals(id)) {
+				return operation.doOperation(argumentStack);
+			}
+		}
 		return 0;
 	}
 
 	public int getPriority(String id){
-		for(Operation operation : operations) if(operation.getID() == id) return operation.getPriority();
+		for(Operation operation : operations) {
+			if(operation.getID().equals(id)) {
+				return operation.getPriority();
+			}
+		}
 		return 0;
 	}
 	
