@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import hu.uszeged.inf.core.processer.*;
+import hu.uszeged.inf.core.builder.operations.*;
 import hu.uszeged.inf.ui.*;
 
 public final class CoreBuilder {
@@ -13,7 +14,12 @@ public final class CoreBuilder {
 
 	public ArrayList<Double> argumentStack = new ArrayList<Double>();
 	
-	public CoreBuilder() { 	} 
+	public CoreBuilder() { 
+		operations.add(new Addition());		
+		operations.add(new Division());
+		operations.add(new Multiplication());
+		operations.add(new Subtraction());		
+	} 
 	
 	public double process(String raw_data){
 		//Function<String, ArrayList> transform = Transform::toReversePolishNotation;

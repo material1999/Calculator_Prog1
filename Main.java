@@ -1,5 +1,6 @@
 
 import hu.uszeged.inf.core.builder.*;
+import hu.uszeged.inf.core.builder.operations.*;
 import hu.uszeged.inf.ui.*;
 
 import java.awt.*;
