@@ -212,7 +212,8 @@ public class MainFrame extends JFrame {
         	if( result % 1 == 0) {
         		textField.setText(""+(int)result);
         	}else {
-        		textField.setText(""+result);
+        		String resulttext = String.valueOf(result).replace(".", ",");
+        		textField.setText(resulttext);
         	}
         		
         		
