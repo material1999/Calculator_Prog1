@@ -208,7 +208,6 @@ public class MainFrame extends JFrame {
             //for(String val : Transform.toReversePolishNotation(processInput.toString()/*IDE KELL*/ , builder)) {
              //   System.out.println(val);
             //}
-        	
         	double result = builder.process(processInput.toString());        	
         	if( result % 1 == 0) {
         		textField.setText(""+(int)result);
@@ -217,7 +216,8 @@ public class MainFrame extends JFrame {
         	}
         		
         		
-            //processInput.delete(0,processInput.length()-1);
+           
+            
             
         	
 

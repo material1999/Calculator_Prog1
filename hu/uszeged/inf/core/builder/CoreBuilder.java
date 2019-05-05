@@ -9,16 +9,20 @@ import hu.uszeged.inf.ui.*;
 
 public final class CoreBuilder {
 	private MainFrame UI;
-	private ArrayList<Operation> operations = new ArrayList<Operation>();
+	private HashMap<String,Operation> operations = new HashMap<String,Operation>();
 	private HashMap<String, Boolean> runtimeLoaded = new HashMap<String, Boolean>();
 
 	public ArrayList<Double> argumentStack = new ArrayList<Double>();
 	
 	public CoreBuilder() { 
-		operations.add(new Addition());		
-		operations.add(new Division());
-		operations.add(new Multiplication());
-		operations.add(new Subtraction());		
+		Addition addition = new Addition();
+		operations.put(addition.id,addition);
+		Division division = new Division();
+		operations.put(division.id,division);
+		Multiplication multiplication = new Multiplication();
+		operations.put(multiplication.id,multiplication);
+		Subtraction subtraction = new Subtraction();
+		operations.put(subtraction.id,subtraction);		
 	} 
 	
 	public double process(String raw_data){
@@ -36,21 +40,16 @@ public final class CoreBuilder {
 	}
 	
 	
-	private double executeOperation(String id) {		
-		for(Operation operation : operations) {
-			if(operation.getID().equals(id)) {
-				return operation.doOperation(argumentStack);
-			}
-		}
+	private double executeOperation(String id) {	
+		
+		 if (operations.containsKey(id)) return operations.get(id).doOperation(argumentStack);
+		
 		return 0;
 	}
 
 	public int getPriority(String id){
-		for(Operation operation : operations) {
-			if(operation.getID().equals(id)) {
-				return operation.getPriority();
-			}
-		}
+		if (operations.containsKey(id)) return operations.get(id).getPriority();
+		
 		return 0;
 	}
 	
@@ -72,7 +71,9 @@ public final class CoreBuilder {
 					Constructor constructor = newOperation.getConstructor();
 					Object operationInstance = constructor.newInstance();
 					if (operationInstance instanceof Linear || operationInstance instanceof Bivariate || operationInstance instanceof Trivariate) {
-        				operations.add((Operation)operationInstance);
+						Operation runtime_operation = (Operation)operationInstance;
+						runtime_operation.id = item.replace(".class","");
+						operations.put(runtime_operation.id,runtime_operation);
         				runtimeLoaded.put(item, true);
 					}else {
 						newOperation = null;
