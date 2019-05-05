@@ -1,6 +1,7 @@
 
 import hu.uszeged.inf.core.builder.*;
 import hu.uszeged.inf.core.builder.operations.*;
+import hu.uszeged.inf.core.processer.Transform;
 import hu.uszeged.inf.ui.*;
 
 import java.awt.*;
@@ -14,7 +15,11 @@ public class Main {
     	CoreBuilder builder = new CoreBuilder(); 
         MainFrame calc = new MainFrame(builder);
         builder.setTargetUI(calc);
-        calc.setVisible(true); 
+        calc.setVisible(true);
+
+
+
+
 
         /**
          * to-do

@@ -6,12 +6,12 @@ import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 
 import hu.uszeged.inf.core.builder.*;
+import hu.uszeged.inf.core.processer.Transform;
 
 public class MainFrame extends JFrame {
 
     private boolean isLastCharANumber = true;
-
-
+    private boolean isThereAComa = false;
 
     public MainFrame (CoreBuilder builder) {
         JFrame frame = new JFrame();
@@ -105,7 +105,8 @@ public class MainFrame extends JFrame {
             }
         }
         StringBuilder input = new StringBuilder();
-        StringBuilder process_input = new StringBuilder();
+        StringBuilder processInput = new StringBuilder();
+        processInput.append("{");
         JButton[] numberButtons = {szam0, szam1, szam2, szam3, szam4, szam5, szam6, szam7, szam8, szam9};
         Button[] operationButtons = {percent, div, mult, sum, sub};
 
@@ -115,17 +116,20 @@ public class MainFrame extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     textField.setText(input.append(i.getText()).toString());
-                    process_input.append(i.getText());
+                    if (isLastCharANumber){
+                        processInput.append(i.getText());
+                        System.out.println(processInput.toString());
+                    }
+                    else {
+                        processInput.append("{" + i.getText());
+                        System.out.println(processInput.toString());
+                    }
                     isLastCharANumber = true;
+                    isThereAComa = false;
 
                 }
             });
         }
-        /*
-         * / utan johet: -, +
-         * * utan johet: -, +
-         *
-         */
         /////////////////////////////////////////////////////////
 
         for (Button operations: operationButtons
@@ -135,14 +139,16 @@ public class MainFrame extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     if(isLastCharANumber){
                         textField.setText(input.append(operations.getText()).toString());
-                        process_input.append(operations.getID());
+                        processInput.append("}" + operations.getID());
+                        System.out.println(processInput.toString());
                         isLastCharANumber = false;
                     }
                     else {
                         input.setCharAt(textField.getText().length()-1, operations.getText().charAt(0));
                         textField.setText(input.toString());
-                        process_input.delete(process_input.lastIndexOf("["),process_input.toString().length()-1);
-                       process_input.append(operations.getID());
+                        processInput.delete(processInput.lastIndexOf("["),processInput.toString().length()-1);
+                       processInput.append(operations.getID());
+
                     }
 
                 }
@@ -160,7 +166,11 @@ public class MainFrame extends JFrame {
         ///////////////////////////////////////////////////////////
 
         //string torlese
-        deletestring.addActionListener(e -> textField.setText(input.delete(0, textField.getText().length()).toString()));
+        deletestring.addActionListener(e -> {
+            textField.setText(input.delete(0, textField.getText().length()).toString());
+            processInput.delete(0, processInput.length()).toString();
+            processInput.append("{");
+        });
         /////////////////////////////////////////////////////////
         //egy karakter torlese
         delete.addActionListener(new ActionListener() {
@@ -176,12 +186,29 @@ public class MainFrame extends JFrame {
             }
         });
 
+        tizedesvesszo.addActionListener(e -> {
+            if (!isThereAComa){
+                textField.setText(input.append(tizedesvesszo.getText()).toString());
+                processInput.append(tizedesvesszo.getText()).toString();
+                System.out.println(processInput);
+                isThereAComa = true;
+            }
+        });
+
 
         ////////////////////////////////////////////
-        
+        /**
+         * új inputnál törölni, majd újra hozzáfűzni
+         * vesszőt megcsinálni
+         *
+         */
         equals.addActionListener(e ->  {
-        	process_input.append("=");
-        	process_input.delete(0, process_input.toString().length()-1).append(builder.process(process_input.toString()));
+        	processInput.append("}=");
+            for(String val : Transform.toReversePolishNotation(processInput.toString()/*IDE KELL*/ , builder)) {
+                System.out.println(val);
+            }
+            System.out.println(processInput.toString());
+
         });
 
         frame.setBounds(300, 200, 500, 700);
