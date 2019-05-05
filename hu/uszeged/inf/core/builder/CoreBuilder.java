@@ -24,9 +24,13 @@ public final class CoreBuilder {
 	public double process(String raw_data){
 		//Function<String, ArrayList> transform = Transform::toReversePolishNotation;
 		for(String element : Transform.toReversePolishNotation(raw_data,this)) {
-			if(!argumentStack.add(Double.parseDouble(element))) {
-				argumentStack.add(executeOperation(element));
+			
+			try{
+				argumentStack.add(Double.parseDouble(element));
 			}
+			catch(Exception e){
+				argumentStack.add(executeOperation(element));
+			}			
 		}
 		return argumentStack.get(0);				
 	}

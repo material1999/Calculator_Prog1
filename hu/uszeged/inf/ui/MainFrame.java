@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import hu.uszeged.inf.core.builder.*;
 import hu.uszeged.inf.core.processer.Transform;
@@ -188,8 +189,8 @@ public class MainFrame extends JFrame {
 
         tizedesvesszo.addActionListener(e -> {
             if (!isThereAComa){
-                textField.setText(input.append(tizedesvesszo.getText()).toString());
-                processInput.append(tizedesvesszo.getText()).toString();
+                textField.setText(input.append(',').toString());
+                processInput.append('.').toString();
                 System.out.println(processInput);
                 isThereAComa = true;
             }
@@ -204,10 +205,21 @@ public class MainFrame extends JFrame {
          */
         equals.addActionListener(e ->  {
         	processInput.append("}=");
-            for(String val : Transform.toReversePolishNotation(processInput.toString()/*IDE KELL*/ , builder)) {
-                System.out.println(val);
-            }
-            System.out.println(processInput.toString());
+            //for(String val : Transform.toReversePolishNotation(processInput.toString()/*IDE KELL*/ , builder)) {
+             //   System.out.println(val);
+            //}
+        	
+        	double result = builder.process(processInput.toString());        	
+        	if( result % 1 == 0) {
+        		textField.setText(""+(int)result);
+        	}else {
+        		textField.setText(""+result);
+        	}
+        		
+        		
+            //processInput.delete(0,processInput.length()-1);
+            
+        	
 
         });
 
