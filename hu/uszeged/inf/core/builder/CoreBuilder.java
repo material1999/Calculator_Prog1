@@ -36,7 +36,9 @@ public final class CoreBuilder {
 				argumentStack.add(executeOperation(element));
 			}			
 		}
-		return argumentStack.get(0);				
+		double result = argumentStack.get(0);
+		argumentStack.clear();
+		return result;
 	}
 	
 	

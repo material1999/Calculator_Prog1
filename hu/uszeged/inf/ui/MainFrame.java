@@ -142,13 +142,13 @@ public class MainFrame extends JFrame {
                         textField.setText(input.append(operations.getText()).toString());
                         processInput.append("}" + operations.getID());
                         System.out.println(processInput.toString());
-                        isLastCharANumber = false;
+                    	isLastCharANumber = false;
                     }
                     else {
-                        input.setCharAt(textField.getText().length()-1, operations.getText().charAt(0));
-                        textField.setText(input.toString());
-                        processInput.delete(processInput.lastIndexOf("["),processInput.toString().length()-1);
-                       processInput.append(operations.getID());
+                    	input.setCharAt(textField.getText().length()-1, operations.getText().charAt(0));
+                    	textField.setText(input.toString());
+                    	processInput.delete(processInput.lastIndexOf("["),processInput.toString().length());
+                    	processInput.append(operations.getID());
 
                     }
 
@@ -169,8 +169,10 @@ public class MainFrame extends JFrame {
         //string torlese
         deletestring.addActionListener(e -> {
             textField.setText(input.delete(0, textField.getText().length()).toString());
-            processInput.delete(0, processInput.length()).toString();
+            //processInput.delete(0, processInput.length()).toString();
+            processInput.setLength(0);
             processInput.append("{");
+            isLastCharANumber = true;
         });
         /////////////////////////////////////////////////////////
         //egy karakter torlese
@@ -215,7 +217,18 @@ public class MainFrame extends JFrame {
         		String resulttext = String.valueOf(result).replace(".", ",");
         		textField.setText(resulttext);
         	}
-        		
+        	isLastCharANumber = true;
+        	input.setLength(0);
+        	if (result % 1 == 0) {
+        		input.append((int) result);
+        	} else {
+        		input.append(result);
+        	}
+        	processInput.setLength(0);
+        	processInput.append("{" + result);
+
+
+
         		
            
             

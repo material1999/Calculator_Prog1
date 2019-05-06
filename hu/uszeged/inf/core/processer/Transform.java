@@ -19,7 +19,11 @@ public class Transform {
 					build.append(equation.charAt(i));
 					++i;
 				}
-				result.add(build.toString());
+				if (build.toString().equals("")) {
+					result.add("0");
+				} else {
+					result.add(build.toString());
+				}
 				build.setLength(0);
 				++i;
 			}
