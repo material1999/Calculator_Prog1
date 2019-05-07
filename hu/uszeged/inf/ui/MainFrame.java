@@ -133,23 +133,21 @@ public class MainFrame extends JFrame {
         }
         /////////////////////////////////////////////////////////
 
-        for (Button operations: operationButtons
-        ) {
+        for (Button operations: operationButtons) {
             operations.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if(isLastCharANumber){
-                        textField.setText(input.append(operations.getText()).toString());
+                        textField.setText(String.valueOf(input.append(operations.getText()).toString()).replace(".", ","));
                         processInput.append("}" + operations.getID());
                         System.out.println(processInput.toString());
                     	isLastCharANumber = false;
                     }
                     else {
                     	input.setCharAt(textField.getText().length()-1, operations.getText().charAt(0));
-                    	textField.setText(input.toString());
+                        textField.setText(String.valueOf(input.toString()).replace(".", ","));
                     	processInput.delete(processInput.lastIndexOf("["),processInput.toString().length());
                     	processInput.append(operations.getID());
-
                     }
 
                 }
@@ -168,8 +166,8 @@ public class MainFrame extends JFrame {
 
         //string torlese
         deletestring.addActionListener(e -> {
-            textField.setText(input.delete(0, textField.getText().length()).toString());
-            //processInput.delete(0, processInput.length()).toString();
+            input.setLength(0);
+            textField.setText(input.toString());
             processInput.setLength(0);
             processInput.append("{");
             isLastCharANumber = true;
@@ -208,7 +206,7 @@ public class MainFrame extends JFrame {
         equals.addActionListener(e ->  {
         	processInput.append("}=");
             //for(String val : Transform.toReversePolishNotation(processInput.toString()/*IDE KELL*/ , builder)) {
-             //   System.out.println(val);
+            //    System.out.println(val);
             //}
         	double result = builder.process(processInput.toString());        	
         	if( result % 1 == 0) {
