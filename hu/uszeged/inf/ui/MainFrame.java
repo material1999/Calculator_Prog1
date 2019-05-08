@@ -179,6 +179,17 @@ public class MainFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     textField.setText(input.deleteCharAt(textField.getText().length()-1).toString());
+                    if (isLastCharANumber) {
+                        processInput.delete(processInput.toString().length() - 1, processInput.toString().length());
+                        if (processInput.charAt(processInput.toString().length()) == '{') {
+                            processInput.deleteCharAt(processInput.toString().length());
+                        }
+                        isLastCharANumber = false;
+                    } else {
+                        processInput.delete(processInput.lastIndexOf("}"), processInput.toString().length());
+                        isLastCharANumber = true;
+                    }
+                    
                 }
                 catch (Exception ex) {
 
@@ -210,20 +221,22 @@ public class MainFrame extends JFrame {
             //}
         	double result = builder.process(processInput.toString());        	
         	if( result % 1 == 0) {
-        		textField.setText(""+(int)result);
+        		textField.setText("" + (int)result);
         	}else {
         		String resulttext = String.valueOf(result).replace(".", ",");
         		textField.setText(resulttext);
         	}
         	isLastCharANumber = true;
         	input.setLength(0);
+            processInput.setLength(0);
+            processInput.append("{");
         	if (result % 1 == 0) {
-        		input.append((int) result);
+        		input.append((int)result);
+                processInput.append((int)result);
         	} else {
         		input.append(result);
+                processInput.append(result);
         	}
-        	processInput.setLength(0);
-        	processInput.append("{" + result);
 
 
 
