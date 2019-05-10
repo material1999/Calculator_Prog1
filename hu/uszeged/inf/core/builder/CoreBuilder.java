@@ -22,7 +22,9 @@ public final class CoreBuilder {
 		Multiplication multiplication = new Multiplication();
 		operations.put(multiplication.id,multiplication);
 		Subtraction subtraction = new Subtraction();
-		operations.put(subtraction.id,subtraction);		
+		operations.put(subtraction.id,subtraction);
+		Percentage percentage = new Percentage();
+		operations.put(percentage.id,percentage);	
 	} 
 	
 	public double process(String raw_data){

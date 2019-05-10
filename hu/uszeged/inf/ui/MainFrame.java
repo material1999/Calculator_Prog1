@@ -116,7 +116,8 @@ public class MainFrame extends JFrame {
             i.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    textField.setText(input.append(i.getText()).toString());
+                    input.append(i.getText());
+                    textField.setText(String.valueOf(input.toString()).replace(".", ","));
                     if (isLastCharANumber){
                         processInput.append(i.getText());
                         System.out.println(processInput.toString());
@@ -167,7 +168,7 @@ public class MainFrame extends JFrame {
         //string torlese
         deletestring.addActionListener(e -> {
             input.setLength(0);
-            textField.setText(input.toString());
+            textField.setText(String.valueOf(input.toString()).replace(".", ","));
             processInput.setLength(0);
             processInput.append("{");
             isLastCharANumber = true;
@@ -178,13 +179,15 @@ public class MainFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    textField.setText(input.deleteCharAt(textField.getText().length()-1).toString());
+                    input.deleteCharAt(textField.getText().length()-1);
+                    textField.setText(String.valueOf(input.toString()).replace(".", ","));
                     if (isLastCharANumber) {
-                        processInput.delete(processInput.toString().length() - 1, processInput.toString().length());
-                        if (processInput.charAt(processInput.toString().length()) == '{') {
-                            processInput.deleteCharAt(processInput.toString().length());
+                        processInput.deleteCharAt(processInput.toString().length() - 1);
+                        isLastCharANumber = true;
+                        if (processInput.charAt(processInput.toString().length() - 1) == '{') {
+                            processInput.deleteCharAt(processInput.toString().length() - 1);
+                            isLastCharANumber = false;
                         }
-                        isLastCharANumber = false;
                     } else {
                         processInput.delete(processInput.lastIndexOf("}"), processInput.toString().length());
                         isLastCharANumber = true;
@@ -194,7 +197,6 @@ public class MainFrame extends JFrame {
                 catch (Exception ex) {
 
                 }
-                isLastCharANumber = true;
             }
         });
 
@@ -215,7 +217,11 @@ public class MainFrame extends JFrame {
          *
          */
         equals.addActionListener(e ->  {
-        	processInput.append("}=");
+        	if (isLastCharANumber) {
+        		processInput.append("}=");
+        	} else {
+        		processInput.append("=");
+        	}
             //for(String val : Transform.toReversePolishNotation(processInput.toString()/*IDE KELL*/ , builder)) {
             //    System.out.println(val);
             //}
@@ -226,7 +232,6 @@ public class MainFrame extends JFrame {
         		String resulttext = String.valueOf(result).replace(".", ",");
         		textField.setText(resulttext);
         	}
-        	isLastCharANumber = true;
         	input.setLength(0);
             processInput.setLength(0);
             processInput.append("{");
@@ -237,6 +242,7 @@ public class MainFrame extends JFrame {
         		input.append(result);
                 processInput.append(result);
         	}
+        	isLastCharANumber = true;
 
 
 

@@ -14,6 +14,7 @@ public class Tester {
 
 		//Division d = new Division();
 		//Subtraction s = new Subtraction();
+		//Percentage p = new Percentage();
 		
 		/* Deprecated
         ClassFinder classFinder = new ClassFinder();
