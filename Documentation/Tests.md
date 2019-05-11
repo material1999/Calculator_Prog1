@@ -3,7 +3,7 @@ Készítette: Balla Tamás, Opauszki Filip, Vass Máté
 
 ---
 
-## Röviden a tesztelési módszerünktől
+## Röviden a tesztelési módszerünkről:
 A tesztelést 2 fázisban végeztük:
 
 * Először a Tester futtatásával a kifejezés fordított lengyel jelölésben való felírásának helyességét ellenőriztük. A Transform osztály egy speciális String-et kapott, a számokat {}, a műveleteket [] jelek közé írva, a végén egy = jellel. Ez egy olyan Stringeket tartalmazó listát gyártott le, ami már fordított lengyel jelölésben tartalmazta a bevitt karaktereket.
