@@ -88,9 +88,11 @@ public final class CoreBuilder {
 					Object operationInstance = constructor.newInstance();
 					if (operationInstance instanceof Linear || operationInstance instanceof Bivariate || operationInstance instanceof Trivariate) {
 						Operation runtime_operation = (Operation)operationInstance;
-						runtime_operation.id = item.replace(".class","");
-						operations.put(runtime_operation.id,runtime_operation);
-        				runtimeLoaded.put(item, true);
+						runtime_operation.id = item.replace(".class","");						
+						if(!runtimeLoaded.containsKey(item)) {
+							operations.put(runtime_operation.id,runtime_operation);
+							runtimeLoaded.put(item, true);
+						}
 					}else {
 						newOperation = null;
 					}
