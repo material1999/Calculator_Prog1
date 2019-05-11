@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class SideWindow {
 
        private int sorszam = 0;
+       JFrame moreOperations = new JFrame();
       public void makeNewButton (String id, String showingID, GridBagConstraints gbc, JFrame frame) {
               Button newButton = new Button(id, showingID);
               gbc.gridy = sorszam/5+1;
@@ -18,12 +19,25 @@ public class SideWindow {
               frame.add(newButton, gbc);
               sorszam++;
        }
+       private boolean isVisible = false;
+
+       public boolean isVisible() {
+              return isVisible;
+       }
+
+       public void setVisible() {
+              isVisible = !isVisible;
+       }
+
+       public void toggle(JFrame frame) {
+             frame.setVisible(!isVisible);
+       }
 
     public SideWindow (JTextField textField) {
 
 
 
-           JFrame moreOperations = new JFrame();
+
            moreOperations.setBounds(170, 200, 100, 700);
            moreOperations.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
            GridBagLayout grid = new GridBagLayout();
@@ -98,7 +112,6 @@ public class SideWindow {
 
 
 
-        moreOperations.setVisible(true);
 
 
 

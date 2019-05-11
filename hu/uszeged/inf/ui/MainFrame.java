@@ -15,7 +15,7 @@ public class MainFrame extends JFrame {
     private boolean isLastCharANumber = true;
     private boolean isThereAComa = false;
     private boolean isThereAlreadyAComa = false;
-
+    StringBuilder processInput = new StringBuilder();
     
     public static  MainFrame getInstance() { // Singleton
     	if(instance == null) {
@@ -120,7 +120,7 @@ public class MainFrame extends JFrame {
             }
         }
         StringBuilder input = new StringBuilder();
-        StringBuilder processInput = new StringBuilder();
+
         processInput.append("{");
         JButton[] numberButtons = {szam0, szam1, szam2, szam3, szam4, szam5, szam6, szam7, szam8, szam9};
         Button[] operationButtons = {percent, div, mult, sum, sub};
@@ -169,11 +169,17 @@ public class MainFrame extends JFrame {
                 }
             });
         }
-
+        SideWindow sideWindow = new SideWindow(textField);
         more.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                SideWindow sideWindow = new SideWindow(textField);
+                if (!sideWindow.isVisible()){
+                    sideWindow.toggle(sideWindow.moreOperations);
+                }
+                else {
+                    sideWindow.setVisible();
+                    sideWindow.toggle(sideWindow.moreOperations);
+                }
             }
         });
 

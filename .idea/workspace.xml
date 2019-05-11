@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da58dfbd-7b3e-47fb-95dc-a794be425966" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hu/uszeged/inf/core/builder/operations/Percentage.java" beforeDir="false" afterPath="$PROJECT_DIR$/hu/uszeged/inf/core/builder/operations/Percentage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hu/uszeged/inf/ui/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/hu/uszeged/inf/ui/MainFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hu/uszeged/inf/ui/SideWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/hu/uszeged/inf/ui/SideWindow.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -31,28 +34,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/ui/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="114" column="47" lean-forward="true" selection-start-line="114" selection-start-column="47" selection-end-line="114" selection-end-column="47" />
+            <state relative-caret-position="333">
+              <caret line="179" column="44" lean-forward="true" selection-start-line="179" selection-start-column="44" selection-end-line="179" selection-end-column="44" />
               <folding>
                 <element signature="e#753#754#0" expanded="true" />
                 <element signature="e#786#787#0" expanded="true" />
-                <element signature="e#6127#6128#0" expanded="true" />
-                <element signature="e#6208#6209#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/ui/SideWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+            <state relative-caret-position="238">
+              <caret line="32" column="42" lean-forward="true" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#681#682#0" expanded="true" />
+                <element signature="e#722#723#0" expanded="true" />
+                <element signature="e#772#773#0" expanded="true" />
+                <element signature="e#816#817#0" expanded="true" />
+                <element signature="e#599#600#0" expanded="true" />
+                <element signature="e#641#642#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,8 +104,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/core/builder/CoreBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1190">
-              <caret line="96" column="44" lean-forward="true" selection-start-line="96" selection-start-column="44" selection-end-line="96" selection-end-column="44" />
+            <state relative-caret-position="136">
+              <caret line="76" column="158" lean-forward="true" selection-start-line="76" selection-start-column="158" selection-end-line="76" selection-end-column="158" />
               <folding>
                 <element signature="e#383#401#0" expanded="true" />
                 <element signature="e#466#483#0" expanded="true" />
@@ -131,8 +138,9 @@
         <option value="$PROJECT_DIR$/Main.java" />
         <option value="$PROJECT_DIR$/hu/uszeged/inf/ui/plugin/asdf.java" />
         <option value="$PROJECT_DIR$/hu/uszeged/inf/ui/plugin/Szinusz.java" />
-        <option value="$PROJECT_DIR$/hu/uszeged/inf/ui/MainFrame.java" />
+        <option value="$PROJECT_DIR$/hu/uszeged/inf/core/builder/operations/Percentage.java" />
         <option value="$PROJECT_DIR$/hu/uszeged/inf/ui/SideWindow.java" />
+        <option value="$PROJECT_DIR$/hu/uszeged/inf/ui/MainFrame.java" />
       </list>
     </option>
   </component>
@@ -209,7 +217,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557572164701" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557574105618" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -258,6 +266,15 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
@@ -276,7 +293,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
@@ -373,31 +390,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/core/builder/operations/Percentage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/core/builder/ClassFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/core/builder/CoreBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="96" column="44" lean-forward="true" selection-start-line="96" selection-start-column="44" selection-end-line="96" selection-end-column="44" />
-          <folding>
-            <element signature="e#383#401#0" expanded="true" />
-            <element signature="e#466#483#0" expanded="true" />
-            <element signature="e#588#596#0" expanded="true" />
-            <element signature="e#814#815#0" expanded="true" />
-            <element signature="e#849#850#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -411,25 +407,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/ui/MainFrame.java">
+    <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/core/builder/CoreBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="114" column="47" lean-forward="true" selection-start-line="114" selection-start-column="47" selection-end-line="114" selection-end-column="47" />
+        <state relative-caret-position="136">
+          <caret line="76" column="158" lean-forward="true" selection-start-line="76" selection-start-column="158" selection-end-line="76" selection-end-column="158" />
           <folding>
-            <element signature="e#753#754#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#6127#6128#0" expanded="true" />
-            <element signature="e#6208#6209#0" expanded="true" />
+            <element signature="e#383#401#0" expanded="true" />
+            <element signature="e#466#483#0" expanded="true" />
+            <element signature="e#588#596#0" expanded="true" />
+            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#849#850#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/core/builder/operations/Percentage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
+          <folding>
+            <element signature="e#217#218#0" expanded="true" />
+            <element signature="e#244#245#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/ui/SideWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        <state relative-caret-position="238">
+          <caret line="32" column="42" lean-forward="true" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hu/uszeged/inf/ui/MainFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="179" column="44" lean-forward="true" selection-start-line="179" selection-start-column="44" selection-end-line="179" selection-end-column="44" />
+          <folding>
+            <element signature="e#753#754#0" expanded="true" />
+            <element signature="e#786#787#0" expanded="true" />
           </folding>
         </state>
       </provider>
