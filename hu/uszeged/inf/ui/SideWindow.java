@@ -12,11 +12,22 @@ public class SideWindow {
 
        private int sorszam = 0;
        JFrame moreOperations = new JFrame();
-      public void makeNewButton (String id, String showingID, GridBagConstraints gbc, JFrame frame) {
+      public void makeNewButton (String id, String showingID, GridBagConstraints gbc, JFrame frame, StringBuilder input, StringBuilder processInput, JTextField textField) {
               Button newButton = new Button(id, showingID);
-              gbc.gridy = sorszam/5+1;
-              gbc.gridx = sorszam%5;
+              gbc.gridy = sorszam/3+1;
+              gbc.gridx = sorszam%3;
               frame.add(newButton, gbc);
+              newButton.setForeground(Color.LIGHT_GRAY);
+              newButton.setBackground(Color.DARK_GRAY);
+              newButton.setBorder(BorderFactory.createEmptyBorder());
+              //newButton.setFont(newButton.getFont().deriveFont(18.0f));
+
+          newButton.addActionListener(e -> {
+                textField.setText(input.append(showingID).toString());
+                processInput.append(id);
+              System.out.println(processInput.toString());
+          });
+
               sorszam++;
        }
        private boolean isVisible = false;
@@ -30,15 +41,16 @@ public class SideWindow {
        }
 
        public void toggle(JFrame frame) {
-             frame.setVisible(!isVisible);
+
+             frame.setState(Frame.ICONIFIED);
        }
 
-    public SideWindow (JTextField textField) {
+    public SideWindow (JTextField textField, StringBuilder input, StringBuilder processInput) {
 
 
 
-
-           moreOperations.setBounds(170, 200, 100, 700);
+           moreOperations.getContentPane().setBackground(Color.DARK_GRAY);
+           moreOperations.setBounds(170, 200, 120, 700);
            moreOperations.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
            GridBagLayout grid = new GridBagLayout();
            GridBagConstraints gbc = new GridBagConstraints();
@@ -49,7 +61,7 @@ public class SideWindow {
            moreOperations.setUndecorated(true);
            moreOperations.setBackground(new Color(0x0));
            moreOperations.setForeground(new Color(0x0));
-           moreOperations.setShape(new RoundRectangle2D.Double(0, 0, 100, 700, 15, 15));
+           moreOperations.setShape(new RoundRectangle2D.Double(0, 0, 120, 700, 15, 15));
 
 
 
@@ -61,32 +73,31 @@ public class SideWindow {
 
 
 
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
-           makeNewButton("asd", "asd", gbc, moreOperations);
+           makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
+
 
 
 

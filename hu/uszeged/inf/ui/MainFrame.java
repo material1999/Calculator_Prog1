@@ -15,8 +15,11 @@ public class MainFrame extends JFrame {
     private boolean isLastCharANumber = true;
     private boolean isThereAComa = false;
     private boolean isThereAlreadyAComa = false;
+    final JTextField textField = new JTextField();
     StringBuilder processInput = new StringBuilder();
-    
+    StringBuilder input = new StringBuilder();
+
+
     public static  MainFrame getInstance() { // Singleton
     	if(instance == null) {
     		instance = new MainFrame();
@@ -46,16 +49,16 @@ public class MainFrame extends JFrame {
 
 
 
-        final JTextField textField = new JTextField();
+
         textField.setBounds(new Rectangle(100, 800));
         textField.setBackground(new Color(45, 45, 45));
         textField.setForeground(Color.LIGHT_GRAY);
         textField.setFont(textField.getFont().deriveFont(34.0f));
-        try {
+        /*try {
             textField.setFont(Font.createFont(Font.TRUETYPE_FONT, MainFrame.class.getResourceAsStream("Roboto-Regular.ttf")));
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
         textField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         textField.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -118,7 +121,6 @@ public class MainFrame extends JFrame {
                 buttons[i*4+j].setBorder(BorderFactory.createEmptyBorder());
             }
         }
-        StringBuilder input = new StringBuilder();
 
         processInput.append("{");
         JButton[] numberButtons = {szam0, szam1, szam2, szam3, szam4, szam5, szam6, szam7, szam8, szam9};
@@ -170,16 +172,18 @@ public class MainFrame extends JFrame {
                 }
             });
         }
-        SideWindow sideWindow = new SideWindow(textField);
+        SideWindow sideWindow = new SideWindow(textField, input, processInput);
         more.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!sideWindow.isVisible()){
+                sideWindow.moreOperations.setVisible(true);
+                if (sideWindow.isVisible()){
                     sideWindow.toggle(sideWindow.moreOperations);
+                    sideWindow.setVisible();
                 }
                 else {
+                    sideWindow.moreOperations.setState(Frame.NORMAL);
                     sideWindow.setVisible();
-                    sideWindow.toggle(sideWindow.moreOperations);
                 }
             }
         });
