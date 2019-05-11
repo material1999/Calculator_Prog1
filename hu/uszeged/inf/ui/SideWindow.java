@@ -4,12 +4,6 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 public class SideWindow {
-    /*private boolean exists = false;
-
-    public void flipExists() {
-        this.exists = !this.exists;
-    }
-    */
 
     public SideWindow (JTextField textField) {
 
@@ -26,8 +20,14 @@ public class SideWindow {
 
 
 
-           JButton asd = new JButton("asd");
-           moreOperations.add(asd);
+           JButton close = new JButton("X");
+           close.setBackground(new Color(80, 0, 0));
+           close.setForeground(Color.LIGHT_GRAY);
+           close.addActionListener(e -> System.exit(0));
+           moreOperations.add(close);
+
+
+
 
 
 

@@ -13,6 +13,8 @@ public class MainFrame extends JFrame {
 
     private boolean isLastCharANumber = true;
     private boolean isThereAComa = false;
+    private boolean isThereAlreadyAComa = false;
+
 
     public MainFrame (CoreBuilder builder) {
         JFrame frame = new JFrame();
@@ -111,7 +113,7 @@ public class MainFrame extends JFrame {
         JButton[] numberButtons = {szam0, szam1, szam2, szam3, szam4, szam5, szam6, szam7, szam8, szam9};
         Button[] operationButtons = {percent, div, mult, sum, sub};
 
-        //nyomkodós gombok jelenjenek meg
+        //szamok
         for (JButton i: numberButtons) {
             i.addActionListener(new ActionListener() {
                 @Override
@@ -150,6 +152,7 @@ public class MainFrame extends JFrame {
                     	processInput.delete(processInput.lastIndexOf("["),processInput.toString().length());
                     	processInput.append(operations.getID());
                     }
+                    isThereAlreadyAComa = false;
 
                 }
             });
@@ -201,11 +204,12 @@ public class MainFrame extends JFrame {
         });
 
         tizedesvesszo.addActionListener(e -> {
-            if (!isThereAComa){
+            if (!isThereAComa && !isThereAlreadyAComa){
                 textField.setText(input.append(',').toString());
                 processInput.append('.').toString();
                 System.out.println(processInput);
                 isThereAComa = true;
+                isThereAlreadyAComa = true;
             }
         });
 
