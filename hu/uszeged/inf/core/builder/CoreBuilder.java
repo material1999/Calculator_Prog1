@@ -8,13 +8,15 @@ import hu.uszeged.inf.core.builder.operations.*;
 import hu.uszeged.inf.ui.*;
 
 public final class CoreBuilder {
+	
 	private MainFrame UI;
 	private HashMap<String,Operation> operations = new HashMap<String,Operation>();
 	private HashMap<String, Boolean> runtimeLoaded = new HashMap<String, Boolean>();
 
 	public ArrayList<Double> argumentStack = new ArrayList<Double>();
 	
-	public CoreBuilder() { 
+	public CoreBuilder(MainFrame ui) { 
+		this.UI = ui;
 		Addition addition = new Addition();
 		operations.put(addition.id,addition);
 		Division division = new Division();
@@ -57,9 +59,6 @@ public final class CoreBuilder {
 		return 0;
 	}
 	
-	public void setTargetUI(MainFrame ui) {
-		this.UI = ui;
-	}
 	
 	public void loadOperation(Object operation) {
 		// Need to call this function in the loaded operation class over the reflection to store it in the this.operations, find a free id and create a button

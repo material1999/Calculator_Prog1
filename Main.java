@@ -11,10 +11,8 @@ import java.awt.event.ActionListener;
 
 public class Main {
 
-    public static void main (String[] args) {
-    	CoreBuilder builder = new CoreBuilder(); 
-        MainFrame calc = new MainFrame(builder);
-        builder.setTargetUI(calc);
+    public static void main (String[] args) {    	
+        MainFrame calc = new MainFrame();
         calc.setVisible(true);
 
 

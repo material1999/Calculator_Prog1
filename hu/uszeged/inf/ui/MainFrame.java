@@ -10,13 +10,13 @@ import hu.uszeged.inf.core.builder.*;
 import hu.uszeged.inf.core.processer.Transform;
 
 public class MainFrame extends JFrame {
-
+	private CoreBuilder builder = new CoreBuilder(this); 
     private boolean isLastCharANumber = true;
     private boolean isThereAComa = false;
     private boolean isThereAlreadyAComa = false;
 
 
-    public MainFrame (CoreBuilder builder) {
+    public MainFrame () {
         JFrame frame = new JFrame();
         GridBagLayout grid = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
