@@ -4,12 +4,12 @@ Készítette: Balla Tamás, Opauszki Filip, Vass Máté
 ---
 
 ## Rövid ismertető
-A feladatunk egy saját műveletekkel bővíthető számológép elkészítése volt. A program futás közben új műveleteket keres egy adott mappában (\*.class néven, lásd a későbbiekben az *Új művelet hozzáadása* résznél), és új operáció esetén új gombot generálva neki az adott művelet már el is végezhető.
+A feladatunk egy saját műveletekkel bővíthető számológép elkészítése volt. A program futás közben új műveleteket keres egy adott mappában (Műveletnév.class néven, lásd a későbbiekben az *Új művelet hozzáadása* résznél), és új operáció esetén új gombot generálva neki az adott művelet már el is végezhető.
 
 ### Program futtatása:
 A program a GitHub-ról letöltött repository gyökérkönyvtárából indítható az alábbi parancssal:
 ```bash
-	
+
 	java Main
 
 ```

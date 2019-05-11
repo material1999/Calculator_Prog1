@@ -66,7 +66,6 @@ public class MainFrame extends JFrame {
         gbc.gridy = 0;
         gbc.gridwidth = 3;
 
-
         frame.add(textField, gbc);
 
         JButton exit  = new JButton("X");
@@ -125,7 +124,8 @@ public class MainFrame extends JFrame {
         JButton[] numberButtons = {szam0, szam1, szam2, szam3, szam4, szam5, szam6, szam7, szam8, szam9};
         Button[] operationButtons = {percent, div, mult, sum, sub};
 
-        //szamok
+        ///////////////////Number Buttons//////////////////////
+
         for (JButton i: numberButtons) {
             i.addActionListener(new ActionListener() {
                 @Override
@@ -146,7 +146,8 @@ public class MainFrame extends JFrame {
                 }
             });
         }
-        /////////////////////////////////////////////////////////
+
+        ////////////////////////Operation Buttons/////////////////////////////////
 
         for (Button operations: operationButtons) {
             operations.addActionListener(new ActionListener() {
@@ -183,10 +184,9 @@ public class MainFrame extends JFrame {
             }
         });
 
+        /////////////////////////////Other Buttons//////////////////////////////
 
-        ///////////////////////////////////////////////////////////
-
-        //string torlese
+        //delete whole input
         deletestring.addActionListener(e -> {
             input.setLength(0);
             textField.setText(String.valueOf(input.toString()).replace(".", ","));
@@ -194,8 +194,8 @@ public class MainFrame extends JFrame {
             processInput.append("{");
             isLastCharANumber = true;
         });
-        /////////////////////////////////////////////////////////
-        //egy karakter torlese
+        
+        // delete last input
         delete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -221,6 +221,7 @@ public class MainFrame extends JFrame {
             }
         });
 
+        // decimal point
         tizedesvesszo.addActionListener(e -> {
             if (!isThereAComa && !isThereAlreadyAComa){
                 textField.setText(input.append(',').toString());
@@ -231,23 +232,14 @@ public class MainFrame extends JFrame {
             }
         });
 
-
-        ////////////////////////////////////////////
-        /**
-         * új inputnál törölni, majd újra hozzáfűzni
-         * vesszőt megcsinálni
-         *
-         */
+        // if equals button is pressed, then call methods to count the result
         equals.addActionListener(e ->  {
         	if (isLastCharANumber) {
         		processInput.append("}=");
         	} else {
         		processInput.append("=");
         	}
-            //for(String val : Transform.toReversePolishNotation(processInput.toString()/*IDE KELL*/ , builder)) {
-            //    System.out.println(val);
-            //}
-        	double result = builder.process(processInput.toString());        	
+        	double result = builder.process(processInput.toString());
         	if( result % 1 == 0) {
         		textField.setText("" + (int)result);
         	}else {
