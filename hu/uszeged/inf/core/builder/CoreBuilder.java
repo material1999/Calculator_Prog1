@@ -12,10 +12,23 @@ public final class CoreBuilder {
 	private MainFrame UI;
 	private HashMap<String,Operation> operations = new HashMap<String,Operation>();
 	private HashMap<String, Boolean> runtimeLoaded = new HashMap<String, Boolean>();
-
+	private static CoreBuilder instance = null; 
 	public ArrayList<Double> argumentStack = new ArrayList<Double>();
 	
-	public CoreBuilder(MainFrame ui) { 
+	
+	 public static  CoreBuilder getInstance(MainFrame ui) { // Singleton
+	    	if(instance == null) {
+	    		instance = new CoreBuilder(ui);
+	    	}
+	    	return instance;
+	    }
+	    
+	    public void finalize() {
+	        instance = null;
+	      }
+
+	
+	private CoreBuilder(MainFrame ui) { 
 		this.UI = ui;
 		Addition addition = new Addition();
 		operations.put(addition.id,addition);
