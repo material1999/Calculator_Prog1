@@ -10,7 +10,9 @@ A tesztelést 2 fázisban végeztük:
 
 	* Példa egy helyes Tester futtatásra:
 	```bash
-		java Tester "{1}[\*][(]{3}[+]{4}[/]{2}[)]="
+
+	java Tester "{1}[*][(]{3}[+]{4}[/]{2}[)]="
+
 	```
 
 * Ezek után ezt a Stringeket tartalmazó listát kapta meg a számításokért felelős osztály, ezt már a Main futtatásával, és az = gomb megnyomásával teszteltük.

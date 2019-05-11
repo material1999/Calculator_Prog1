@@ -10,7 +10,7 @@ A feladatunk egy saját műveletekkel bővíthető számológép elkészítése 
 A program a GitHub-ról letöltött repository gyökérkönyvtárából indítható az alábbi parancssal:
 ```bash
 
-	java Main
+java Main
 
 ```
 
@@ -31,36 +31,36 @@ A programból kilépni a jobb felső *X* gomb megnyomásával lehet.
 Új műveletet hozzáadásához a ~/hu/uszeged/inf/core/builder/operations mappába kell a *Műveletnév.java* fájlból fordított, *Műveletnév.class* fájlt bemásolni. A fordítandó *Műveletnév.java* fájlnak a következőképpen kell kinéznie:
 ```java
 
-	package hu.uszeged.inf.core.builder.operations;
-	import hu.uszeged.inf.core.builder.*;
+package hu.uszeged.inf.core.builder.operations;
+import hu.uszeged.inf.core.builder.*;
 
-	public class Műveletnév extends HányVáltozós {
+public class Műveletnév extends HányVáltozós {
 
-		/*	Hány változós a művelet? "HányVáltozós" szó helyére kell az alábbiak egyikét írni:
-		 *	egyváltozós: Linear
-		 *	kétváltozós: Bivariate
-		 *	háromváltozós: Trivariate
-		 */
+	/*	Hány változós a művelet? "HányVáltozós" szó helyére kell az alábbiak egyikét írni:
+	 *	egyváltozós: Linear
+	 *	kétváltozós: Bivariate
+	 *	háromváltozós: Trivariate
+	 */
 
-		public Műveletnév() {
-			super("művelet ID-je", művelet prioritása);
-		}
-
-		/*
-		 *	művelet ID-je (String): egy rövid, pár betűs azonosítója a műveletnek, ami még nincs használatban
-		 *	művelet prioritása (int): prioritás, minél nagyobb, annál hamarabb kell elvégezni
-		 *	pl: összeadásnak 1, szorzásnak 2 a prioritása
-		 */
-
-		protected double operation(double param_1, double param_2) {
-			/*	Annyi változót kell a függvénynek átadni, amennyi változós,
-			 *	majd meg kell valósítani a műveletet.
-			 *	Figyelem!!! A változók veremben tárolódnak, fontos figyelni a számok sorrendjére.
-			 *	Amelyik szám később lett beolvasva, az szerepel a paraméterek között hamarabb.
-			 */
-			return param_1 + param_2;
-		}
+	public Műveletnév() {
+		super("művelet ID-je", művelet prioritása);
 	}
+
+	/*
+	 *	művelet ID-je (String): egy rövid, pár betűs azonosítója a műveletnek, ami még nincs használatban
+	 *	művelet prioritása (int): prioritás, minél nagyobb, annál hamarabb kell elvégezni
+	 *	pl: összeadásnak 1, szorzásnak 2 a prioritása
+	 */
+
+	protected double operation(double param_1, double param_2) {
+		/*	Annyi változót kell a függvénynek átadni, amennyi változós,
+		 *	majd meg kell valósítani a műveletet.
+		 *	Figyelem!!! A változók veremben tárolódnak, fontos figyelni a számok sorrendjére.
+		 *	Amelyik szám később lett beolvasva, az szerepel a paraméterek között hamarabb.
+		 */
+		return param_1 + param_2;
+	}
+}
 
 ```
 Fordítás és a megfelelő mappába való bemásolás után a *Hozzáadott műveletek* fül újboli megnyitásával lefut a mappaszkennelés, és az új műveletek azonnal elérhetőek a programon belülről.
