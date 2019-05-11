@@ -9,9 +9,7 @@ A feladatunk egy saját műveletekkel bővíthető számológép elkészítése 
 ### Program futtatása:
 A program a GitHub-ról letöltött repository gyökérkönyvtárából indítható az alábbi parancssal:
 ```bash
-
 java Main
-
 ```
 
 ### Program használata:
@@ -30,7 +28,6 @@ A programból kilépni a jobb felső *X* gomb megnyomásával lehet.
 ### Új művelet hozzáadása (profi felhasználóknak):
 Új műveletet hozzáadásához a ~/hu/uszeged/inf/core/builder/operations mappába kell a *Műveletnév.java* fájlból fordított, *Műveletnév.class* fájlt bemásolni. A fordítandó *Műveletnév.java* fájlnak a következőképpen kell kinéznie:
 ```java
-
 package hu.uszeged.inf.core.builder.operations;
 import hu.uszeged.inf.core.builder.*;
 
@@ -61,6 +58,5 @@ public class Műveletnév extends HányVáltozós {
 		return param_1 + param_2;
 	}
 }
-
 ```
 Fordítás és a megfelelő mappába való bemásolás után a *Hozzáadott műveletek* fül újboli megnyitásával lefut a mappaszkennelés, és az új műveletek azonnal elérhetőek a programon belülről.
