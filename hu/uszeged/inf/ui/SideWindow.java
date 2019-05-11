@@ -1,7 +1,12 @@
 package hu.uszeged.inf.ui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
+import java.io.File;
+import java.lang.reflect.*;
+import java.util.ArrayList;
+
 
 public class SideWindow {
 
@@ -25,6 +30,39 @@ public class SideWindow {
            close.setForeground(Color.LIGHT_GRAY);
            close.addActionListener(e -> System.exit(0));
            moreOperations.add(close);
+
+           File actual = new File("hu/uszeged/inf/ui/plugin");
+           ArrayList<String> files = new ArrayList<>();
+           for( File f : actual.listFiles()){
+                  files.add(f.getName());
+           }
+
+
+
+
+
+
+                  try {
+                         Class c = Class.forName("Sin");
+                         Field id = c.getField("id");
+                         id.setAccessible(true);
+                         Object value = id.get(new Object());
+                         System.out.println(value);
+                         /*Button newButton = new Button(id, showingID);
+                         moreOperations.add(newButton);*/
+
+                  } catch (Throwable e) {
+                         e.printStackTrace();
+                  }
+
+
+
+
+
+
+
+
+
 
 
 
