@@ -3,8 +3,8 @@ import java.util.*;
 
 public abstract class Linear extends Operation {
 
-	public Linear(String id, int priority) {
-		super(id, priority);
+	public Linear(String id, String showingID,int priority) {
+		super(id, showingID,priority);
 	}
 	
 	public final double doOperation(ArrayList<Double> arguments) {

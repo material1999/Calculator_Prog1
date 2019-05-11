@@ -92,6 +92,7 @@ public final class CoreBuilder {
 						if(!runtimeLoaded.containsKey(item)) {
 							operations.put(runtime_operation.id,runtime_operation);
 							runtimeLoaded.put(item, true);
+							 UI.makeNewButton("["+item+"]", "asd");
 						}
 					}else {
 						newOperation = null;

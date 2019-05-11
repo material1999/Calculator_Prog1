@@ -4,7 +4,7 @@ import hu.uszeged.inf.core.builder.*;
 public class Subtraction extends Bivariate {
 
 	public Subtraction() {
-		super("-", 1);
+		super("-","-", 1);
 	}
 
 	protected double operation(double param_1, double param_2) {

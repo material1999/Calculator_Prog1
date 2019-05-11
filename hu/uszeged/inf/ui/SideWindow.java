@@ -11,49 +11,45 @@ import java.util.ArrayList;
 public class SideWindow {
 
        private int sorszam = 0;
-       JFrame moreOperations = new JFrame();
-      public void makeNewButton (String id, String showingID, GridBagConstraints gbc, JFrame frame, StringBuilder input, StringBuilder processInput, JTextField textField) {
+       private MainFrame parent_window = null;
+       private JFrame moreOperations = new JFrame();
+       private GridBagConstraints gbc = new GridBagConstraints();
+      public void makeNewButton (String id, String showingID) {
               Button newButton = new Button(id, showingID);
               gbc.gridy = sorszam/3+1;
               gbc.gridx = sorszam%3;
-              frame.add(newButton, gbc);
+              moreOperations.add(newButton, gbc);
               newButton.setForeground(Color.LIGHT_GRAY);
               newButton.setBackground(Color.DARK_GRAY);
               newButton.setBorder(BorderFactory.createEmptyBorder());
               //newButton.setFont(newButton.getFont().deriveFont(18.0f));
 
           newButton.addActionListener(e -> {
-                textField.setText(input.append(showingID).toString());
-                processInput.append(id);
-              System.out.println(processInput.toString());
+                parent_window.textField.setText(parent_window.input.append(showingID).toString());
+                parent_window.processInput.append(id);
+              System.out.println(parent_window.processInput.toString());
           });
 
               sorszam++;
        }
        private boolean isVisible = false;
 
-       public boolean isVisible() {
-              return isVisible;
-       }
-
-       public void setVisible() {
+      
+       public void toggle() {
               isVisible = !isVisible;
+              moreOperations.setVisible(isVisible);
        }
 
-       public void toggle(JFrame frame) {
+      
 
-             frame.setState(Frame.ICONIFIED);
-       }
-
-    public SideWindow (JTextField textField, StringBuilder input, StringBuilder processInput) {
-
-
-
-           moreOperations.getContentPane().setBackground(Color.DARK_GRAY);
+    public SideWindow (MainFrame parent) {
+    	parent_window = parent;
+    	moreOperations.setType(javax.swing.JFrame.Type.UTILITY);
+    		moreOperations.getContentPane().setBackground(Color.DARK_GRAY);
            moreOperations.setBounds(170, 200, 120, 700);
            moreOperations.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
            GridBagLayout grid = new GridBagLayout();
-           GridBagConstraints gbc = new GridBagConstraints();
+          
            moreOperations.setLayout(grid);
            gbc.fill = GridBagConstraints.BOTH;
            gbc.weightx = 1.0;
@@ -62,7 +58,8 @@ public class SideWindow {
            moreOperations.setBackground(new Color(0x0));
            moreOperations.setForeground(new Color(0x0));
            moreOperations.setShape(new RoundRectangle2D.Double(0, 0, 120, 700, 15, 15));
-
+           moreOperations.setResizable(false);
+          
 
 
            /*JButton close = new JButton("X");
@@ -70,61 +67,6 @@ public class SideWindow {
            close.setForeground(Color.LIGHT_GRAY);
            close.addActionListener(e -> System.exit(0));
            moreOperations.add(close);*/
-
-
-
-           makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-        makeNewButton("[asd]", "asd", gbc, moreOperations, input, processInput, textField);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         /* CustomClassLoader classLoader = new CustomClassLoader();

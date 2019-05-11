@@ -2,8 +2,8 @@ package hu.uszeged.inf.core.builder;
 import java.util.*;
 
 public abstract class Trivariate extends Operation{
-	public Trivariate(String id, int priority) {
-		super(id, priority);
+	public Trivariate(String id,String showingID, int priority) {
+		super(id,showingID, priority);
 	}
 	
 	public final double doOperation(ArrayList<Double> arguments) {

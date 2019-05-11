@@ -18,6 +18,9 @@ public class MainFrame extends JFrame {
     final JTextField textField = new JTextField();
     StringBuilder processInput = new StringBuilder();
     StringBuilder input = new StringBuilder();
+    SideWindow sideWindow = new SideWindow(this);
+    Timer timer = null;
+    private Point initialClick;
 
 
     public static  MainFrame getInstance() { // Singleton
@@ -30,6 +33,10 @@ public class MainFrame extends JFrame {
     public void finalize() {
         instance = null;
       }
+    
+    public void makeNewButton(String id, String showingID) {
+    	 sideWindow.makeNewButton(id,showingID);
+    }
 
     private MainFrame () {
         JFrame frame = new JFrame();
@@ -40,20 +47,68 @@ public class MainFrame extends JFrame {
         frame.setUndecorated(true);
         frame.setBackground(new Color(0x0, true));
         frame.setShape(new RoundRectangle2D.Double(0, 0, 500, 700, 50, 50));
+        
+        
+        JTextField move = new JTextField();
 
+        move.setBounds(new Rectangle(100, 800));        
+        move.setBackground(new Color(45, 45, 45));
+        move.setForeground(Color.LIGHT_GRAY);
+        move.setFont(move.getFont().deriveFont(34.0f));
+        move.setBorder(BorderFactory.createEmptyBorder());
+        move.setEditable(false);
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 3;
+        gbc.gridheight = 1;
+        frame.add(move,gbc);
+    
+        
+        
+        
+        /// Need to work on :(
+        move.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+            	if(e.getButton() == MouseEvent.BUTTON1) {
+            		 initialClick = e.getPoint();            		
+            	}
+            }
+            public void mouseDragged(MouseEvent e) {
+            	 move.setText("drag");
+                int thisX = frame.getLocation().x;
+                int thisY = frame.getLocation().y;
 
+                int xMoved = e.getX() - initialClick.x;
+                int yMoved = e.getY() - initialClick.y;
 
+                int X = thisX + xMoved;
+                int Y = thisY + yMoved;
+                frame.setLocation(X, Y);
+            }
+        });
 
-
-
-
-
-
-
+       
+        JButton exit  = new JButton();
+        gbc.gridx = 3;
+        gbc.gridy = 0;
+        gbc.gridwidth = 4;
+        frame.add(exit, gbc);
+        exit.setBackground(new Color(80, 0, 0));
+        exit.setForeground(Color.LIGHT_GRAY);
+        exit.setFont(exit.getFont().deriveFont(34.0f));
+        exit.setBorder(BorderFactory.createEmptyBorder());
+        exit.addActionListener(e -> System.exit(0));
+        
+        
+        
         textField.setBounds(new Rectangle(100, 800));
         textField.setBackground(new Color(45, 45, 45));
         textField.setForeground(Color.LIGHT_GRAY);
         textField.setFont(textField.getFont().deriveFont(34.0f));
+        textField.setEditable(false);
+        textField.setHorizontalAlignment(SwingConstants.RIGHT);
         /*try {
             textField.setFont(Font.createFont(Font.TRUETYPE_FONT, MainFrame.class.getResourceAsStream("Roboto-Regular.ttf")));
         } catch (Exception e) {
@@ -61,26 +116,17 @@ public class MainFrame extends JFrame {
         }*/
 
         textField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
-        textField.setHorizontalAlignment(SwingConstants.RIGHT);
-        gbc.fill = GridBagConstraints.BOTH;
+        gbc.gridheight = 1;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 3;
+        gbc.gridy = 1;
+        gbc.gridwidth = 4;
 
         frame.add(textField, gbc);
 
-        JButton exit  = new JButton("X");
-        gbc.gridx = 3;
-        gbc.gridy = 0;
-        gbc.gridwidth = 1;
-        frame.add(exit, gbc);
-        exit.setBackground(new Color(80, 0, 0));
-        exit.setForeground(Color.LIGHT_GRAY);
-        exit.setFont(exit.getFont().deriveFont(34.0f));
-        exit.setBorder(BorderFactory.createEmptyBorder());
-        exit.addActionListener(e -> System.exit(0));
+      
+        
 
         JButton szam1 = new JButton("1");
         JButton szam2 = new JButton("2");
@@ -113,7 +159,7 @@ public class MainFrame extends JFrame {
         for (int i=0; i<5; i++){
             for (int j = 0; j < 4; j++) {
                 gbc.gridx = j;
-                gbc.gridy = i+1;
+                gbc.gridy = i+2;
                 frame.add(buttons[i*4+j], gbc);
                 buttons[i*4+j].setBackground(Color.DARK_GRAY);
                 buttons[i*4+j].setForeground(Color.LIGHT_GRAY);
@@ -172,19 +218,13 @@ public class MainFrame extends JFrame {
                 }
             });
         }
-        SideWindow sideWindow = new SideWindow(textField, input, processInput);
+        
+        ////////////////////////Side Window/////////////////////////////////
+       
         more.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                sideWindow.moreOperations.setVisible(true);
-                if (sideWindow.isVisible()){
-                    sideWindow.toggle(sideWindow.moreOperations);
-                    sideWindow.setVisible();
-                }
-                else {
-                    sideWindow.moreOperations.setState(Frame.NORMAL);
-                    sideWindow.setVisible();
-                }
+                sideWindow.toggle();                
             }
         });
 
@@ -260,16 +300,8 @@ public class MainFrame extends JFrame {
         		input.append(result);
                 processInput.append(result);
         	}
-        	isLastCharANumber = true;
-
-
-
-        		
-           
-            
-            
+        	isLastCharANumber = true; 
         	
-
         });
 
         frame.setBounds(300, 200, 500, 700);
