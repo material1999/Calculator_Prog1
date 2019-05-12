@@ -95,10 +95,10 @@ public final class CoreBuilder {
 		        Object newInstance = c.newInstance();
 		    	
 		        if (newInstance instanceof Linear || newInstance instanceof Bivariate || newInstance instanceof Trivariate) {
-		        	if(!runtimeLoaded.containsKey("hu.uszeged.inf.ui.plugin.Exponentation")) {
+		        	if(!runtimeLoaded.containsKey(item)) {
 			        	Operation operation = (Operation) newInstance;
-			        	operations.put("hu.uszeged.inf.ui.plugin.Exponentation", operation);
-			        	UI.makeNewButton("["+operation.getID()+"]", operation.getShowingID());
+			        	operations.put(item, operation);
+			        	UI.makeNewButton("["+item+"]", operation.getShowingID());
 			        }
 		        	
 		        }
