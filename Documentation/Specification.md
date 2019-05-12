@@ -26,7 +26,7 @@ A programból kilépni a jobb felső *X* gomb megnyomásával lehet.
 
 
 ### Új művelet hozzáadása (profi felhasználóknak):
-Új műveletet hozzáadásához a ~/hu/uszeged/inf/core/builder/operations mappába kell a *Műveletnév.java* fájlt bemásolni, majd egy fordítást végezni a gyökérkönyvtárból az alábbi parancssal:
+Új műveletet hozzáadásához a ~/hu/uszeged/inf/core/builder/operations/plugin mappába kell a *Műveletnév.java* fájlt bemásolni, majd egy fordítást végezni a gyökérkönyvtárból az alábbi parancssal:
 ```bash
 find . -name "*.java" | xargs javac
 ```
