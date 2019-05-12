@@ -7,7 +7,7 @@ public class Exponentation extends Bivariate {
         super("^", "^", 3);
     }
     public double operation (double param_1, double param_2) {
-        return Math.pow(param_1, param_1);
+        return Math.pow(param_2, param_1);
     }
 
 

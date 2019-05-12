@@ -20,6 +20,7 @@ public class SideWindow {
        private GridBagConstraints gbc = new GridBagConstraints();
 
 
+
     public void makeNewButton (String id, String showingID) {
               Button newButton = new Button(id, showingID);
               gbc.gridy = sorszam/3+1;

@@ -226,7 +226,8 @@ public class MainFrame extends JFrame {
         more.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                sideWindow.toggle();                
+                sideWindow.toggle();
+                builder.loadOperation();
             }
         });
 

@@ -77,17 +77,18 @@ public final class CoreBuilder {
 		
 		return 0;
 	}
-	
-	
-	
-	
-   
+
+
+
+
+	static int counter = 0;
 	
 	public  void loadOperation() {
 		
 		ClassFinder classFinder = new ClassFinder();
 		String path =  new File("hu/uszeged/inf/core/builder/plugin").getAbsolutePath();
         ArrayList<String> list = classFinder.findClasses(path);
+
         for (String item : list) {
         	System.out.println(item);
         	try {
@@ -95,14 +96,15 @@ public final class CoreBuilder {
 		        Object newInstance = c.newInstance();
 		    	
 		        if (newInstance instanceof Linear || newInstance instanceof Bivariate || newInstance instanceof Trivariate) {
-		        	if(!runtimeLoaded.containsKey(item)) {
+		        	if(!(runtimeLoaded.containsKey(item)) && counter < list.size()) {
 			        	Operation operation = (Operation) newInstance;
 			        	operations.put(item, operation);
 			        	UI.makeNewButton("["+item+"]", operation.getShowingID());
+						counter++;
 			        }
 		        	
 		        }
-		      
+
 		      
 		    } catch (Exception e) {
 		        e.printStackTrace();
