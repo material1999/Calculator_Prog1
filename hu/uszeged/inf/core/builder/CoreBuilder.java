@@ -41,7 +41,7 @@ public final class CoreBuilder {
 		Subtraction subtraction = new Subtraction();
 		operations.put(subtraction.id,subtraction);
 		Percentage percentage = new Percentage();
-		operations.put(percentage.id,percentage);	
+		operations.put(percentage.id,percentage);
 	}
 
 	public CoreBuilder() {
@@ -51,7 +51,6 @@ public final class CoreBuilder {
 	public double process(String raw_data){
 		//Function<String, ArrayList> transform = Transform::toReversePolishNotation;
 		for(String element : Transform.toReversePolishNotation(raw_data,this)) {
-			
 			try{
 				argumentStack.add(Double.parseDouble(element));
 			}
@@ -62,13 +61,10 @@ public final class CoreBuilder {
 		double result = argumentStack.get(0);
 		argumentStack.clear();
 		return result;
-	}
-	
+	}	
 	
 	private double executeOperation(String id) {	
-		
-		 if (operations.containsKey(id)) return operations.get(id).doOperation(argumentStack);
-		
+		if (operations.containsKey(id)) return operations.get(id).doOperation(argumentStack);
 		return 0;
 	}
 
@@ -81,14 +77,9 @@ public final class CoreBuilder {
 		if (operations.containsKey(id)) return operations.get(id).getShowingID();
 		return "";
 	}
-
-
-
-
-
 	
 	public  void loadOperation() {
-		
+
 		ClassFinder classFinder = new ClassFinder();
 		String path =  new File("hu/uszeged/inf/core/builder/plugin").getAbsolutePath();
         ArrayList<String> list = classFinder.findClasses(path);
@@ -105,22 +96,16 @@ public final class CoreBuilder {
 			        	Operation operation = (Operation) newInstance;
 			        	operations.put(item, operation);
 			        	UI.makeNewButton("["+item+"]", operation.getShowingID());
-				
-			        }
-		        	
+			        }	
 		        }
-
 		      
 		    } catch (Exception e) {
 		        e.printStackTrace();
 		    }
         }
-		
 		 
-		 /*
+		/*
 		// Need to call this function in the loaded operation class over the reflection to store it in the this.operations, find a free id and create a button
-		
-       
       
         	if (!runtimeLoaded.get(item)) {
         		ClassLoader classLoader = this.getClass().getClassLoader();
@@ -146,6 +131,5 @@ public final class CoreBuilder {
         		
         	}
         }*/
-
 	}
 }

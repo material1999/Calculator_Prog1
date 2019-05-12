@@ -1,4 +1,5 @@
 package hu.uszeged.inf.ui;
+import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -65,9 +66,6 @@ public class MainFrame extends JFrame {
         gbc.gridwidth = 3;
         gbc.gridheight = 1;
         frame.add(move,gbc);
-    
-        
-        
         
         /// Need to work on :(
         move.addMouseListener(new MouseAdapter(){
@@ -102,8 +100,7 @@ public class MainFrame extends JFrame {
         exit.setFont(exit.getFont().deriveFont(34.0f));
         exit.setBorder(BorderFactory.createEmptyBorder());
         exit.addActionListener(e -> System.exit(0));
-        
-        
+             
         
         textField.setBounds(new Rectangle(100, 800));
         textField.setBackground(new Color(45, 45, 45));
@@ -125,10 +122,8 @@ public class MainFrame extends JFrame {
         gbc.gridy = 1;
         gbc.gridwidth = 4;
 
-        frame.add(textField, gbc);
+        frame.add(textField, gbc);     
 
-      
-        
 
         JButton szam1 = new JButton("1");
         JButton szam2 = new JButton("2");
@@ -156,7 +151,7 @@ public class MainFrame extends JFrame {
 
 
         JButton[] buttons = {delete, deletestring, percent, div, szam7, szam8, szam9, mult, szam4, szam5, szam6, sum,
-                szam1, szam2, szam3, sub, more, szam0, tizedesvesszo, equals};
+            szam1, szam2, szam3, sub, more, szam0, tizedesvesszo, equals};
 
         for (int i=0; i<5; i++){
             for (int j = 0; j < 4; j++) {
@@ -212,7 +207,6 @@ public class MainFrame extends JFrame {
                     else {
                     	String delete = processInput.substring(processInput.lastIndexOf("["),processInput.length());                     	
                     	delete = builder.getShowingId(delete.substring(1, delete.length()-1));                   	
-                    	
                     	input.replace(input.lastIndexOf(delete),input.lastIndexOf(delete)+ delete.length(),"");                    
                     	input.append(operations.getText());
                         textField.setText(String.valueOf(input.toString()).replace(".", ","));
@@ -220,7 +214,6 @@ public class MainFrame extends JFrame {
                     	processInput.append(operations.getID());
                     }
                     isThereAlreadyAComa = false;
-
                 }
             });
         }
@@ -265,8 +258,7 @@ public class MainFrame extends JFrame {
                     } else {
                         processInput.delete(processInput.lastIndexOf("}"), processInput.toString().length());
                         isLastCharANumber = true;
-                    }
-                    
+                    }   
                 }
                 catch (Exception ex) {
 
@@ -292,6 +284,10 @@ public class MainFrame extends JFrame {
         	} else {
         		processInput.append("=");
         	}
+
+            ArrayList<String> test = Transform.toReversePolishNotation(processInput.toString(), builder);
+            System.out.println(test);
+
         	double result = builder.process(processInput.toString());
         	if( result % 1 == 0) {
         		textField.setText("" + (int)result);

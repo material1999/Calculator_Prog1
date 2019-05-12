@@ -4,7 +4,7 @@ Készítette: Balla Tamás, Opauszki Filip, Vass Máté
 ---
 
 ## Rövid ismertető
-A feladatunk egy saját műveletekkel bővíthető számológép elkészítése volt. A program futás közben új műveleteket keres egy adott mappában (Műveletnév.class néven, lásd a későbbiekben az *Új művelet hozzáadása* résznél), és új operáció esetén új gombot generálva neki az adott művelet már el is végezhető.
+A feladatunk egy saját műveletekkel bővíthető számológép elkészítése volt. A program futás közben új műveleteket keres egy adott mappában (Műveletnév.java néven, lásd a későbbiekben az *Új művelet hozzáadása* résznél), és új operáció esetén új gombot generálva neki az adott művelet már el is végezhető.
 
 ### Program futtatása:
 A program a GitHub-ról letöltött repository gyökérkönyvtárából indítható az alábbi parancssal:
@@ -15,18 +15,22 @@ java Main
 ### Program használata:
 Ha az utóbbi parancsot helyesen írta be a felhasználó, a program el is indult és megjelent a főképernyő. A számokon és a 4 alapműveleten (+, -, /, \*) az alábbi gombok jelennek meg:
 
-* % :	maradékos osztás maradékát adja
-* C :	utolsó karakter törlése a kifejezés végéről
-* CE:	teljes kifejezés törlése
-* = :	eredmény kiíratása
-* , :	tizedesvessző
+* %   :	maradékos osztás maradékát adja
+* C   :	utolsó karakter törlése a kifejezés végéről
+* CE  :	teljes kifejezés törlése
+* =   :	eredmény kiíratása
+* ,   :	tizedesvessző
 * ... :	*Hozzáadott műveletek* fül megnyitása
 
 A programból kilépni a jobb felső *X* gomb megnyomásával lehet.
 
 
 ### Új művelet hozzáadása (profi felhasználóknak):
-Új műveletet hozzáadásához a ~/hu/uszeged/inf/core/builder/operations mappába kell a *Műveletnév.java* fájlból fordított, *Műveletnév.class* fájlt bemásolni. A fordítandó *Műveletnév.java* fájlnak a következőképpen kell kinéznie:
+Új műveletet hozzáadásához a ~/hu/uszeged/inf/core/builder/operations mappába kell a *Műveletnév.java* fájlt bemásolni, majd egy fordítást végezni a gyökérkönyvtárból az alábbi parancssal:
+```bash
+find . -name "*.java" | xargs javac
+```
+A fordítandó *Műveletnév.java* fájlnak pedig a következőképpen kell kinéznie:
 ```java
 package hu.uszeged.inf.core.builder.operations;
 import hu.uszeged.inf.core.builder.*;
