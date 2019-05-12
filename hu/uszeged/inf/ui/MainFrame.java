@@ -10,7 +10,8 @@ import hu.uszeged.inf.core.builder.*;
 import hu.uszeged.inf.core.processer.Transform;
 
 public class MainFrame extends JFrame {
-	private CoreBuilder builder = CoreBuilder.getInstance(this);
+	//private CoreBuilder builder = CoreBuilder.getInstance(this);
+    private CoreBuilder builder = new CoreBuilder(this);
 	private static MainFrame instance = null; 
     private boolean isLastCharANumber = true;
     private boolean isThereAComa = false;

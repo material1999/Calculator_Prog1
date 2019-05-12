@@ -12,11 +12,11 @@ public final class CoreBuilder {
 	private MainFrame UI;
 	private HashMap<String,Operation> operations = new HashMap<String,Operation>();
 	private HashMap<String, Boolean> runtimeLoaded = new HashMap<String, Boolean>();
-	private static CoreBuilder instance = null; 
+	//private static CoreBuilder instance = null;
 	public ArrayList<Double> argumentStack = new ArrayList<Double>();
 	
 	
-	 public static  CoreBuilder getInstance(MainFrame ui) { // Singleton
+	 /*public static  CoreBuilder getInstance(MainFrame ui) { // Singleton
 	    	if(instance == null) {
 	    		instance = new CoreBuilder(ui);
 	    	}
@@ -25,10 +25,10 @@ public final class CoreBuilder {
 	    
 	    public void finalize() {
 	        instance = null;
-	      }
+	      }*/
 
 	
-	private CoreBuilder(MainFrame ui) { 
+	public CoreBuilder(MainFrame ui) {
 		this.UI = ui;
 		Addition addition = new Addition();
 		operations.put(addition.id,addition);
@@ -40,7 +40,11 @@ public final class CoreBuilder {
 		operations.put(subtraction.id,subtraction);
 		Percentage percentage = new Percentage();
 		operations.put(percentage.id,percentage);	
-	} 
+	}
+
+	public CoreBuilder() {
+
+	}
 	
 	public double process(String raw_data){
 		//Function<String, ArrayList> transform = Transform::toReversePolishNotation;
@@ -73,10 +77,10 @@ public final class CoreBuilder {
 	}
 	
 	
-	public void loadOperation(Object operation) {
+	/*public  void loadOperation() {
 		// Need to call this function in the loaded operation class over the reflection to store it in the this.operations, find a free id and create a button
 		ClassFinder classFinder = new ClassFinder();
-        ArrayList<String> list = classFinder.findClasses();
+        ArrayList<String> list = classFinder.findClasses("./plugin");
        
         for (String item : list) {
         	if (!runtimeLoaded.get(item)) {
@@ -104,5 +108,5 @@ public final class CoreBuilder {
         	}
         }
 
-	}
+	}*/
 }
