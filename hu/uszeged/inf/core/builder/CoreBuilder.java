@@ -81,7 +81,7 @@ public final class CoreBuilder {
 
 
 
-	static int counter = 0;
+
 	
 	public  void loadOperation() {
 		
@@ -96,11 +96,12 @@ public final class CoreBuilder {
 		        Object newInstance = c.newInstance();
 		    	
 		        if (newInstance instanceof Linear || newInstance instanceof Bivariate || newInstance instanceof Trivariate) {
-		        	if(!(runtimeLoaded.containsKey(item)) && counter < list.size()) {
+		        	if(!(runtimeLoaded.containsKey(item))) {
+		        		runtimeLoaded.put(item, true);
 			        	Operation operation = (Operation) newInstance;
 			        	operations.put(item, operation);
 			        	UI.makeNewButton("["+item+"]", operation.getShowingID());
-						counter++;
+				
 			        }
 		        	
 		        }
