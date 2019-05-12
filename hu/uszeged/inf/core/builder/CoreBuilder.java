@@ -73,9 +73,13 @@ public final class CoreBuilder {
 	}
 
 	public int getPriority(String id){
-		if (operations.containsKey(id)) return operations.get(id).getPriority();
-		
+		if (operations.containsKey(id)) return operations.get(id).getPriority();		
 		return 0;
+	}
+	
+	public String getShowingId(String id) {
+		if (operations.containsKey(id)) return operations.get(id).getShowingID();
+		return "";
 	}
 
 

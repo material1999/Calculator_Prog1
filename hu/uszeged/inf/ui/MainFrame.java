@@ -210,7 +210,11 @@ public class MainFrame extends JFrame {
                     	isLastCharANumber = false;
                     }
                     else {
-                    	input.setCharAt(textField.getText().length()-1, operations.getText().charAt(0));
+                    	String delete = processInput.substring(processInput.lastIndexOf("["),processInput.length());                     	
+                    	delete = builder.getShowingId(delete.substring(1, delete.length()-1));                   	
+                    	
+                    	input.replace(input.lastIndexOf(delete),input.lastIndexOf(delete)+ delete.length(),"");                    
+                    	input.append(operations.getText());
                         textField.setText(String.valueOf(input.toString()).replace(".", ","));
                     	processInput.delete(processInput.lastIndexOf("["),processInput.toString().length());
                     	processInput.append(operations.getID());

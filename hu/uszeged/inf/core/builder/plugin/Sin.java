@@ -4,7 +4,7 @@ import hu.uszeged.inf.core.builder.Linear;
 
 public class Sin extends Linear {
     public Sin() {
-        super("s", "s", 3);
+        super("s", "sin", 3);
     }
 
     @Override
