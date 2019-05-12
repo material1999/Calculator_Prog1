@@ -31,8 +31,19 @@ public class SideWindow {
               //newButton.setFont(newButton.getFont().deriveFont(18.0f));
 
           newButton.addActionListener(e -> {
-                parent_window.textField.setText(parent_window.input.append(showingID).toString());
-                parent_window.processInput.append(id);
+
+                if (parent_window.isLastCharANumber){
+                    parent_window.processInput.append("}" + id);
+                    parent_window.isLastCharANumber = false;
+                    parent_window.textField.setText(parent_window.input.append(showingID).toString());
+                }
+                else {
+                   parent_window.processInput.delete(parent_window.processInput.lastIndexOf("["), parent_window.processInput.lastIndexOf("]")+1);
+                   parent_window.processInput.append(id);
+                   parent_window.input.delete(parent_window.textField.getText().length()-1, parent_window.textField.getText().length());
+                   parent_window.textField.setText(parent_window.input.append(showingID).toString());
+
+                }
               System.out.println(parent_window.processInput.toString());
           });
 

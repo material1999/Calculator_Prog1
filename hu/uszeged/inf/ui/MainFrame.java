@@ -13,8 +13,8 @@ public class MainFrame extends JFrame {
 	//private CoreBuilder builder = CoreBuilder.getInstance(this);
     private CoreBuilder builder = new CoreBuilder(this);
 	private static MainFrame instance = null; 
-    private boolean isLastCharANumber = true;
-    private boolean isThereAComa = false;
+    public boolean isLastCharANumber = true;
+    public boolean isThereAComa = false;
     private boolean isThereAlreadyAComa = false;
     final JTextField textField = new JTextField();
     StringBuilder processInput = new StringBuilder();
@@ -239,6 +239,8 @@ public class MainFrame extends JFrame {
             processInput.setLength(0);
             processInput.append("{");
             isLastCharANumber = true;
+            isThereAComa = false;
+            isThereAlreadyAComa = false;
         });
         
         // delete last input
