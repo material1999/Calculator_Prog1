@@ -1,10 +1,8 @@
-package hu.uszeged.inf.ui.plugin;
+package hu.uszeged.inf.core.builder.plugin;
 
 import hu.uszeged.inf.core.builder.Bivariate;
 
 public class Exponentation extends Bivariate {
-    public String id = "}[^]{";
-    public String showingID = "^";
     public Exponentation () {
         super("^", "^", 3);
     }
