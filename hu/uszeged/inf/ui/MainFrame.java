@@ -28,6 +28,7 @@ public class MainFrame extends JFrame {
     	if(instance == null) {
     		instance = new MainFrame();
     	}
+    	instance.setVisible(true);
     	return instance;
     }
     
@@ -49,7 +50,7 @@ public class MainFrame extends JFrame {
         frame.setBackground(new Color(0x0, true));
         frame.setShape(new RoundRectangle2D.Double(0, 0, 500, 700, 50, 50));
         
-        
+        this.builder.loadOperation();
         JTextField move = new JTextField();
 
         move.setBounds(new Rectangle(100, 800));        

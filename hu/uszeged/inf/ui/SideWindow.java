@@ -67,18 +67,7 @@ public class SideWindow {
            moreOperations.setResizable(false);
 
 
-        try {
-            Class c = Class.forName("hu.uszeged.inf.ui.plugin.Exponentation");
-            Field id = c.getDeclaredField("id");
-            Field showingID = c.getDeclaredField("showingID");
-            Object newInstance = c.newInstance();
-            Object idValue = id.get(newInstance);
-            Object showingIDValue = showingID.get(newInstance);
-
-            makeNewButton(idValue.toString(), showingIDValue.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    
 
 
     }

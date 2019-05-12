@@ -1,6 +1,8 @@
 package hu.uszeged.inf.core.builder;
 
+import java.io.File;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import hu.uszeged.inf.core.processer.*;
@@ -77,12 +79,42 @@ public final class CoreBuilder {
 	}
 	
 	
-	/*public  void loadOperation() {
-		// Need to call this function in the loaded operation class over the reflection to store it in the this.operations, find a free id and create a button
+	
+	
+   
+	
+	public  void loadOperation() {
+		
 		ClassFinder classFinder = new ClassFinder();
-        ArrayList<String> list = classFinder.findClasses("./plugin");
-       
+		String path =  new File("hu/uszeged/inf/core/builder/plugin").getAbsolutePath();
+        ArrayList<String> list = classFinder.findClasses(path);
         for (String item : list) {
+        	System.out.println(item);
+        	try {
+		        Class c = Class.forName("hu.uszeged.inf.core.builder.plugin."+item);
+		        Object newInstance = c.newInstance();
+		    	
+		        if (newInstance instanceof Linear || newInstance instanceof Bivariate || newInstance instanceof Trivariate) {
+		        	if(!runtimeLoaded.containsKey("hu.uszeged.inf.ui.plugin.Exponentation")) {
+			        	Operation operation = (Operation) newInstance;
+			        	operations.put("hu.uszeged.inf.ui.plugin.Exponentation", operation);
+			        	UI.makeNewButton("["+operation.getID()+"]", operation.getShowingID());
+			        }
+		        	
+		        }
+		      
+		      
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		    }
+        }
+		
+		 
+		 /*
+		// Need to call this function in the loaded operation class over the reflection to store it in the this.operations, find a free id and create a button
+		
+       
+      
         	if (!runtimeLoaded.get(item)) {
         		ClassLoader classLoader = this.getClass().getClassLoader();
         		Class newOperation;
@@ -106,7 +138,7 @@ public final class CoreBuilder {
 				}       		
         		
         	}
-        }
+        }*/
 
-	}*/
+	}
 }
