@@ -424,25 +424,30 @@ public class MainFrame extends JFrame {
             ArrayList<String> test = Transform.toReversePolishNotation(processInput.toString(), builder);
             System.out.println(test);
 
-        	double result = builder.process(processInput.toString());
-        	if( result % 1 == 0) {
-        		textField.setText("" + (int)result);
-        	}else {
-        		String resulttext = String.valueOf(result).replace(".", ",");
-        		textField.setText(resulttext);
+        	try {
+        		double result = builder.process(processInput.toString());
+        		if( result % 1 == 0) {
+	        		textField.setText("" + (int)result);
+	        	}else {
+	        		String resulttext = String.valueOf(result).replace(".", ",");
+	        		textField.setText(resulttext);
+	        	}
+	        	input.setLength(0);
+	            processInput.setLength(0);
+	            processInput.append("{");
+	        	if (result % 1 == 0) {
+	        		input.append((int)result);
+	                processInput.append((int)result);
+	        	} else {
+	        		input.append(result);
+	                processInput.append(result);
+	        	}
+	        	isLastCharANumber = true; 
+	        } catch (Throwable t) {
+        		textField.setText("Error");
+        		processInput.setLength(0);
+        		processInput.append("{");
         	}
-        	input.setLength(0);
-            processInput.setLength(0);
-            processInput.append("{");
-        	if (result % 1 == 0) {
-        		input.append((int)result);
-                processInput.append((int)result);
-        	} else {
-        		input.append(result);
-                processInput.append(result);
-        	}
-        	isLastCharANumber = true; 
-        	
         });
 
         frame.setBounds(300, 200, 500, 700);
