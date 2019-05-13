@@ -5,23 +5,20 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import hu.uszeged.inf.core.builder.*;
 import hu.uszeged.inf.core.processer.Transform;
 
 public class MainFrame extends JFrame {
-	//private CoreBuilder builder = CoreBuilder.getInstance(this);
     private CoreBuilder builder = new CoreBuilder(this);
 	private static MainFrame instance = null; 
-    public boolean isLastCharANumber = true;
-    public boolean isThereAComa = false;
-    private boolean isThereAlreadyAComa = false;
-    final JTextField textField = new JTextField();
-    StringBuilder processInput = new StringBuilder();
-    StringBuilder input = new StringBuilder();
-    SideWindow sideWindow = new SideWindow(this);
-    Timer timer = null;
+	protected boolean isLastCharANumber = true;
+	protected boolean isThereAComa = false;
+	protected boolean isThereAlreadyAComa = false;
+	protected final JTextField textField = new JTextField();
+    protected StringBuilder processInput = new StringBuilder();
+    protected StringBuilder input = new StringBuilder();
+    private SideWindow sideWindow = new SideWindow(this);
     private Point initialClick;
 
 

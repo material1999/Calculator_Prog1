@@ -18,6 +18,8 @@ public class SideWindow {
        private MainFrame parent_window = null;
        private JFrame moreOperations = new JFrame();
        private GridBagConstraints gbc = new GridBagConstraints();
+       private boolean isVisible = false;
+
 
 
 
@@ -50,8 +52,6 @@ public class SideWindow {
 
               sorszam++;
        }
-       private boolean isVisible = false;
-
       
        public void toggle() {
               isVisible = !isVisible;
@@ -77,10 +77,5 @@ public class SideWindow {
            moreOperations.setForeground(new Color(0x0));
            moreOperations.setShape(new RoundRectangle2D.Double(0, 0, 120, 700, 15, 15));
            moreOperations.setResizable(false);
-
-
-    
-
-
     }
 }

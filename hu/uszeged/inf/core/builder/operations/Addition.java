@@ -2,8 +2,7 @@ package hu.uszeged.inf.core.builder.operations;
 import hu.uszeged.inf.core.builder.*;
 
 public class Addition extends Bivariate {
-	public String id = "+";
-	public String showingID = "+";
+	
 	public Addition() {
 		super("+","+", 1);
 	}

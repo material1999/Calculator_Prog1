@@ -2,8 +2,8 @@ package hu.uszeged.inf.core.builder;
 import java.util.*;
 
 public abstract class Operation {
-	public String id;
-	public String showingID;
+	protected String id;
+	protected String showingID;
 	protected int priority;
 	public abstract double doOperation(ArrayList<Double> arguments);	
 	public final String getID() {return this.id;}

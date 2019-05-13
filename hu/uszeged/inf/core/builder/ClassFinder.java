@@ -4,7 +4,7 @@ import java.util.*;
 
 public class ClassFinder {
 
-	public ArrayList<String> findClasses(String pathname) {
+	public static ArrayList<String> findClasses(String pathname) {
 		File folder = new File(pathname);
 		File[] listOfFiles = folder.listFiles();
 		ArrayList<String> classList = new ArrayList<String>();
