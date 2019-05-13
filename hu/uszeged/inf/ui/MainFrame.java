@@ -150,6 +150,8 @@ public class MainFrame extends JFrame {
         frame.add(textField, gbc);     
 
 
+        gbc.gridwidth = 1;
+        
         JButton szam1 = new JButton("1");
         JButton szam2 = new JButton("2");
         JButton szam3 = new JButton("3");
@@ -162,7 +164,15 @@ public class MainFrame extends JFrame {
         JButton szam0 = new JButton("0");
         JButton more = new JButton("...");
         JButton tizedesvesszo = new JButton(",");
-        Button sum = new Button("[+]","+");
+        Button bracket_open = new Button("[(]","("); 
+        Button bracket_close = new Button("[)]",")"); 
+        
+     
+        
+        
+        gbc.gridwidth = 1;
+        
+        Button sum = new Button("[+]","+");        
         Button sub = new Button("[-]","-");
         Button mult = new Button("[*]","*");
         Button div = new Button("[/]","/");
@@ -172,16 +182,63 @@ public class MainFrame extends JFrame {
         JButton deletestring = new JButton("CE");
 
 
-        gbc.gridwidth = 1;
 
 
-        JButton[] buttons = {delete, deletestring, percent, div, szam7, szam8, szam9, mult, szam4, szam5, szam6, sum,
+        JButton[] buttons = {delete, deletestring, percent, div, szam7, szam8, szam9, mult, szam4, szam5, szam6,sum,
             szam1, szam2, szam3, sub, more, szam0, tizedesvesszo, equals};
 
-        for (int i=0; i<5; i++){
+        
             for (int j = 0; j < 4; j++) {
                 gbc.gridx = j;
-                gbc.gridy = i+2;
+                gbc.gridy = 2;
+                frame.add(buttons[j], gbc);
+                buttons[j].setBackground(Color.DARK_GRAY);
+                buttons[j].setForeground(Color.LIGHT_GRAY);
+                buttons[j].setFont(buttons[j].getFont().deriveFont(34.0f));
+                buttons[j].setBorder(BorderFactory.createEmptyBorder());
+            }
+
+        
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        frame.add(bracket_open, gbc);
+        bracket_open.setBackground(Color.DARK_GRAY);
+        bracket_open.setForeground(Color.LIGHT_GRAY);
+        bracket_open.setFont(bracket_open.getFont().deriveFont(34.0f));
+        bracket_open.setBorder(BorderFactory.createEmptyBorder());
+        
+        
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        frame.add(bracket_close, gbc);
+        bracket_close.setBackground(Color.DARK_GRAY);
+        bracket_close.setForeground(Color.LIGHT_GRAY);
+        bracket_close.setFont(bracket_close.getFont().deriveFont(34.0f));
+        bracket_close.setBorder(BorderFactory.createEmptyBorder());
+        
+        gbc.gridwidth = 2;
+        gbc.gridx = 2;
+        gbc.gridy = 3;
+        JTextField empty = new JTextField();
+
+        empty.setBounds(new Rectangle(100, 800));        
+        empty.setBackground(Color.DARK_GRAY);
+        empty.setForeground(Color.LIGHT_GRAY);
+        empty.setFont(empty.getFont().deriveFont(34.0f));
+        empty.setBorder(BorderFactory.createEmptyBorder());
+        empty.setEditable(false);
+        gbc.fill = GridBagConstraints.BOTH;
+        
+
+        frame.add(empty,gbc);
+        
+        
+        gbc.gridwidth = 1;
+        
+        for (int i=1; i<5; i++){
+            for (int j = 0; j < 4; j++) {
+                gbc.gridx = j;
+                gbc.gridy = i+3;
                 frame.add(buttons[i*4+j], gbc);
                 buttons[i*4+j].setBackground(Color.DARK_GRAY);
                 buttons[i*4+j].setForeground(Color.LIGHT_GRAY);
@@ -189,10 +246,12 @@ public class MainFrame extends JFrame {
                 buttons[i*4+j].setBorder(BorderFactory.createEmptyBorder());
             }
         }
+        
+        
 
         processInput.append("{");
         JButton[] numberButtons = {szam0, szam1, szam2, szam3, szam4, szam5, szam6, szam7, szam8, szam9};
-        Button[] operationButtons = {percent, div, mult, sum, sub};
+        Button[] operationButtons = {percent, div, mult, sum, sub,bracket_open,bracket_close};
 
         ///////////////////Number Buttons//////////////////////
 
@@ -220,6 +279,8 @@ public class MainFrame extends JFrame {
                 }
             });
         }
+        
+        
 
         ////////////////////////Operation Buttons/////////////////////////////////
 
@@ -234,7 +295,8 @@ public class MainFrame extends JFrame {
                         textField.setText(String.valueOf(input.append(operations.getText()).toString()).replace(".", ","));
                         processInput.append("}" + operations.getID());
                         System.out.println(processInput.toString());
-                    	isLastCharANumber = false;
+                    	if(operations.getID() != "[(]" && operations.getID() != "[)]"  )isLastCharANumber = false;
+                    	else isLastCharANumber = true;
                     }
                     else {
                     	String delete = processInput.substring(processInput.lastIndexOf("["),processInput.length());                     	
