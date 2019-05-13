@@ -129,6 +129,7 @@ public class MainFrame extends JFrame {
         exit.setForeground(Color.LIGHT_GRAY);
         exit.setFont(exit.getFont().deriveFont(34.0f));
         exit.setBorder(BorderFactory.createEmptyBorder());
+        exit.setText("x");
         exit.addActionListener(e -> System.exit(0));
              
         
