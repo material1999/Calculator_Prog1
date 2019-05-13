@@ -251,7 +251,20 @@ public class MainFrame extends JFrame {
 
         processInput.append("{");
         JButton[] numberButtons = {szam0, szam1, szam2, szam3, szam4, szam5, szam6, szam7, szam8, szam9};
-        Button[] operationButtons = {percent, div, mult, sum, sub,bracket_open,bracket_close};
+        Button[] operationButtons = {percent, div, mult, sum, sub};
+        ///////////////////Brackets////////////////////////////
+        bracket_open.addActionListener(e -> {
+            if (!isLastCharANumber || (input.length() == 0)) {
+                textField.setText(input.append(bracket_open.getShowingID()).toString());
+                processInput.append(bracket_open.getID());
+            }
+        });
+        bracket_close.addActionListener(e -> {
+            if (isLastCharANumber) {
+                textField.setText(input.append(bracket_close.getShowingID()).toString());
+                processInput.append(bracket_close.getID());
+            }
+        });
 
         ///////////////////Number Buttons//////////////////////
 
