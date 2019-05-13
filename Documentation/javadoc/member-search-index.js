@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"hu.uszeged.inf.ui","c":"SideWindow","l":"makeNewButton(String, String)","url":"makeNewButton(java.lang.String,java.lang.String)"},{"p":"hu.uszeged.inf.ui","c":"SideWindow","l":"SideWindow(MainFrame)","url":"%3Cinit%3E(hu.uszeged.inf.ui.MainFrame)"},{"p":"hu.uszeged.inf.ui","c":"SideWindow","l":"toggle()"}]

@@ -1,6 +1,13 @@
 package hu.uszeged.inf.core.builder;
 import java.util.*;
 
+
+
+/**
+* <h1>Operation</h1>
+* This class is the abstract class all of the operations.
+*/
+
 public abstract class Operation {
 	protected String id;
 	protected String showingID;

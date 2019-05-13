@@ -9,6 +9,12 @@ import hu.uszeged.inf.core.processer.*;
 import hu.uszeged.inf.core.builder.operations.*;
 import hu.uszeged.inf.ui.*;
 
+/**
+* <h1>CoreBuilder</h1>
+* This class is responsible for the operation classes storing, searching, command executing.
+
+*/
+
 public final class CoreBuilder {
 	
 	private MainFrame UI;
@@ -19,6 +25,11 @@ public final class CoreBuilder {
 	
 	
 	public CoreBuilder(MainFrame ui) {
+		/**
+         * This is the constructor of the CoreBuilder.
+         * @param MainFrame The connected UI page.
+         * @return CoreBuilder This returns a CoreBuilder type object.
+         */
 		this.UI = ui;
 		Addition addition = new Addition();
 		operations.put(addition.id,addition);
@@ -35,7 +46,11 @@ public final class CoreBuilder {
 	
 	
 	public double process(String raw_data){
-		//Function<String, ArrayList> transform = Transform::toReversePolishNotation;
+		/**
+         * This method will process the process_input from the UI, using static toReversePolishNotation method from Transform class.
+         * @param String The process input from the UI.
+         * @return double This returns the result of the user's input.
+         */
 		for(String element : Transform.toReversePolishNotation(raw_data,this)) {
 			try{
 				argumentStack.add(Double.parseDouble(element));
@@ -49,23 +64,40 @@ public final class CoreBuilder {
 		return result;
 	}	
 	
-	private double executeOperation(String id) {	
+	private double executeOperation(String id) {
+		/**
+         * This method will find and do the operation for the process method.
+         * @param String The id of the operation.
+         * @return double This returns the result of the operation.
+         */
 		if (operations.containsKey(id)) return operations.get(id).doOperation(argumentStack);
 		return 0;
 	}
 
 	public int getPriority(String id){
+		/**
+         * This method will find and return the priority level of operation for thestatic toReversePolishNotation method from Transform class.
+         * @param String The id of the operation.
+         */
 		if (operations.containsKey(id)) return operations.get(id).getPriority();		
 		return 0;
 	}
 	
 	public String getShowingId(String id) {
+		/**
+         * This method will find and return the showing id for the input text.
+         * @param String The id of the operation.
+         * @return double This returns the showingID of the operation.
+         */
 		if (operations.containsKey(id)) return operations.get(id).getShowingID();
 		return "";
 	}
 	
 	public  void loadOperation() {
-
+		/**
+         * This method will load classes from the plugin directory, store the instance into the operations and make a new button in sideWindow.
+         * 
+         */
 		String path =  new File("hu/uszeged/inf/core/builder/plugin").getAbsolutePath();
         ArrayList<String> list = ClassFinder.findClasses(path);
 

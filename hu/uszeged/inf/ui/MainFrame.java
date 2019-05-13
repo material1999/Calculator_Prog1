@@ -9,7 +9,21 @@ import java.io.IOException;
 import hu.uszeged.inf.core.builder.*;
 import hu.uszeged.inf.core.processer.Transform;
 
+
+
+/**
+* <h1>Main page</h1>
+* The landing page of the program.
+* <p>
+* <b>Note:</b> Implemented as a Singleton class.
+*
+*
+*/
+
 public class MainFrame extends JFrame {
+	
+	
+	
     private CoreBuilder builder = new CoreBuilder(this);
 	private static MainFrame instance = null; 
 	protected boolean isLastCharANumber = true;
@@ -21,8 +35,13 @@ public class MainFrame extends JFrame {
     private SideWindow sideWindow = new SideWindow(this);
     private Point initialClick;
 
-
+   
     public static  MainFrame getInstance() { // Singleton
+    	 /**
+         * This method handle the Singleton typed instantiation.
+         * 
+         * @return MainFrame This returns a MainFrame type object.
+         */
     	if(instance == null) {
     		instance = new MainFrame();
     	}
@@ -30,13 +49,26 @@ public class MainFrame extends JFrame {
     	return instance;
     }
     
+    /**
+     * This method can finalize the stored object of MainFrame.
+     */
+    
     public void finalize() {
         instance = null;
       }
     
+    /**
+     * This method will call the makeNewButton method in the sideWindow to make a new button for a new operation.
+     * @param String The id for the new operation, which will used in processing input.
+     * @param String The idShowing for the new operation,which will used in the showing texts.     * 
+     */
     public void makeNewButton(String id, String showingID) {
     	 sideWindow.makeNewButton(id,showingID);
     }
+    
+    /**
+     * Constructor of the ManFrame class, private due to the Singleton design pattern.    
+     */
 
     private MainFrame () {
         JFrame frame = new JFrame();
@@ -105,11 +137,7 @@ public class MainFrame extends JFrame {
         textField.setFont(textField.getFont().deriveFont(34.0f));
         textField.setEditable(false);
         textField.setHorizontalAlignment(SwingConstants.RIGHT);
-        /*try {
-            textField.setFont(Font.createFont(Font.TRUETYPE_FONT, MainFrame.class.getResourceAsStream("Roboto-Regular.ttf")));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+        
 
         textField.setBorder(javax.swing.BorderFactory.createEmptyBorder());
         gbc.gridheight = 1;
@@ -171,7 +199,11 @@ public class MainFrame extends JFrame {
         for (JButton i: numberButtons) {
             i.addActionListener(new ActionListener() {
                 @Override
+               
                 public void actionPerformed(ActionEvent e) {
+                	 /**
+                     * This method handling the number buttons and add a new number into the inputs. 
+                     */
                     input.append(i.getText());
                     textField.setText(String.valueOf(input.toString()).replace(".", ","));
                     if (isLastCharANumber){
@@ -195,6 +227,9 @@ public class MainFrame extends JFrame {
             operations.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                	 /**
+                     * This method handling the operation buttons and add a new operation tags into the inputs. 
+                     */
                     if(isLastCharANumber){
                         textField.setText(String.valueOf(input.append(operations.getText()).toString()).replace(".", ","));
                         processInput.append("}" + operations.getID());
@@ -220,6 +255,9 @@ public class MainFrame extends JFrame {
         more.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
+            	 /**
+                 * This method toggle the sideWindow. 
+                 */
                 sideWindow.toggle();
                 builder.loadOperation();
             }
@@ -229,6 +267,9 @@ public class MainFrame extends JFrame {
 
         //delete whole input
         deletestring.addActionListener(e -> {
+        	 /**
+             * This listener delete the whole input. 
+             */
             input.setLength(0);
             textField.setText(String.valueOf(input.toString()).replace(".", ","));
             processInput.setLength(0);
@@ -242,6 +283,9 @@ public class MainFrame extends JFrame {
         delete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	 /**
+                 * This listener delete the last command from the inputs. 
+                 */
                 try {
                     input.deleteCharAt(textField.getText().length()-1);
                     textField.setText(String.valueOf(input.toString()).replace(".", ","));
@@ -265,6 +309,9 @@ public class MainFrame extends JFrame {
 
         // decimal point
         tizedesvesszo.addActionListener(e -> {
+        	 /**
+             * This listener handle the decimals. 
+             */
             if (!isThereAComa && !isThereAlreadyAComa){
                 textField.setText(input.append(',').toString());
                 processInput.append('.').toString();
@@ -276,6 +323,9 @@ public class MainFrame extends JFrame {
 
         // if equals button is pressed, then call methods to count the result
         equals.addActionListener(e ->  {
+        	 /**
+             * This listener call methods to count the result. 
+             */
         	if (isLastCharANumber) {
         		processInput.append("}=");
         	} else {

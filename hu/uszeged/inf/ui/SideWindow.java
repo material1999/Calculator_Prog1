@@ -12,6 +12,13 @@ import java.lang.reflect.*;
 import java.util.ArrayList;
 
 
+/**
+* <h1>SideWindow</h1>
+* The page of the extending operations.
+
+*
+*/
+
 public class SideWindow {
 
        private int sorszam = 0;
@@ -24,6 +31,14 @@ public class SideWindow {
 
 
     public void makeNewButton (String id, String showingID) {
+    	
+    	 /**
+         * This method can make a new button for a new operation
+         * 
+         * @param String ID of the new operation.
+         * @param String ShowingId of the new operation.
+         * 
+         */
               Button newButton = new Button(id, showingID);
               gbc.gridy = sorszam/3+1;
               gbc.gridx = sorszam%3;
@@ -54,6 +69,12 @@ public class SideWindow {
        }
       
        public void toggle() {
+    		
+      	 /**
+           * This method will toggle on or off the panel.
+           * 
+           * 
+           */
               isVisible = !isVisible;
               moreOperations.setVisible(isVisible);
        }
@@ -61,6 +82,11 @@ public class SideWindow {
       
 
     public SideWindow (MainFrame parent) {
+    	 /**
+         * Constructor of the SideWindow class
+         * 
+         * @param MainFrame The parent window.
+         */
     	parent_window = parent;
     	moreOperations.setType(javax.swing.JFrame.Type.UTILITY);
     		moreOperations.getContentPane().setBackground(Color.DARK_GRAY);
